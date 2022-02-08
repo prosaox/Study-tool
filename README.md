@@ -3,15 +3,10 @@
 ###  Team Members
 
 | Name | GitHub Username | Email
-
 | --- | --- | --- |
-
 | Abu Sayeed Khan | sayeedkhannabil| khanas1@myumanitoba.ca
-
 | Thomas Livingstone | thomaslivingstone| living11@myumanitoba
-
 | Aaron Nguyen | prosaox| nguyen62@myuamnitoba.ca
-
 | Hasin Ishrak | ishrakHP| ishrakh@myumanitoba.ca
 
 ##  Team Leader:
