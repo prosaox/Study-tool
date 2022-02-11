@@ -22,11 +22,11 @@
 ### Core Features
 
 > * All registered users can add courses that they want to keep track of to their account.
-> > * Different course related activities such as assignments, exams and projects can be added to each course to:
-> > > * Make schedule and get notifications about their deadlines
-> > > * Add grades of each activities
-> > > * Create goals and track progress towards that goal by already achieved grades
-> > * Personalized tasks can be created and scheduled.
+> * Different course related activities such as assignments, exams and projects can be added to each course.
+> * Make schedule and get notifications about the activities
+> * Add grades of each activity
+> * Create goals and track progress towards that goal by already achieved grades of each activity
+> * Personalized tasks can be created and scheduled.
 
 
 ###  Languages and Tools
