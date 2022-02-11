@@ -23,7 +23,7 @@
 > > > * Make schedule and get notifications about their deadlines
 > > > * Add grades of each activities
 > > > * Create goals and track progress towards that goal by already achieved grades
-> > * Also personalized tasks can be created and scheduled.
+> > * Personalized tasks can be created and scheduled.
 
 
 ###  Languages and Tools
