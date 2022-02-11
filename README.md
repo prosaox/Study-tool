@@ -10,7 +10,7 @@
 | --- | --- | --- |
 | Abu Sayeed Khan | sayeedkhannabil| khanas1@myumanitoba.ca
 | Thomas Livingstone | thomaslivingstone| living11@myumanitoba.ca
-| Aaron Nguyen | prosaox| nguyen62@myuamnitoba.ca
+| Aaron Nguyen | prosaox| nguyen62@myumanitoba.ca
 | Hasin Ishrak | ishrakHP| ishrakh@myumanitoba.ca
 
 ###  Team Leader:
