@@ -30,10 +30,14 @@
 
 
 ###  Languages and Tools
+* Front-end: ReactJS
+* Back-end: NodeJS and ExpressJS
+* Database: MongoDB
 
+For more information, you can click [HERE](https://github.com/prosaox/Study-tool/wiki/Tools-and-Tech)
 
 ###  Meeting Notes
-
+For meeting info and notes, you can click [HERE](https://github.com/prosaox/Study-tool/wiki/Meetings)
 
 ###  System Architecture Design
 
