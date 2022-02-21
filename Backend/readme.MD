@@ -7,22 +7,22 @@
 
 ## Initiaize
 
-```
+``` node
 npm init
 ```
 
 ## Modules
-```
+``` node
 npm i express bcryptjs jsonwebtoken mongoose --save
 ```
 
 ## Nodemon global setup
 
-```
+``` bash
 sudo npm install -g nodemon
 ```
 
 ## Start Running program
-```
+``` node
 nodemon
 ```
