@@ -1,0 +1,25 @@
+{
+  "name": "studybuddy",
+  "version": "1.0.0",
+  "description": "`StudyBuddy` is a web based tool to help students to better manage their schedule. With `StudyBuddy`, students can add their courses and track their assignments, quizes, midterms and final exam deadlines. Additionally, Users can schedule their own personal routine to create better study habits. Overall, students will be able to track their progress throughout their desired time period, and track if they are progressing towards their individual goals.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prosaox/StudyBuddy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/prosaox/StudyBuddy/issues"
+  },
+  "homepage": "https://github.com/prosaox/StudyBuddy#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.3",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.2.3"
+  }
+}
