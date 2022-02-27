@@ -12,13 +12,13 @@ environment{
             }
         } 
     }
-//      stage('Building Image'){  
-//             steps{    
-//                 script {
-//                     dockerImage = docker.build registry
-// }
-// }
-// }
+     stage('Building Image'){  
+            steps{    
+                script {
+                    dockerImage = docker.build registry
+}
+}
+}
 //        stage('Upload Image') {
 // steps{    
 //          script {
