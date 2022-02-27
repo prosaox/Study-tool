@@ -12,22 +12,22 @@ environment{
             }
         } 
     }
-     stage('Building Image'){  
-            steps{    
-                script {
-                    dockerImage = docker.build registry
-}
-}
-}
-       stage('Upload Image') {
-steps{    
-         script {
-            docker.withRegistry( '', registryCredential ) {
-            dockerImage.push()
-            }
-        }
-      }
-  }
+//      stage('Building Image'){  
+//             steps{    
+//                 script {
+//                     dockerImage = docker.build registry
+// }
+// }
+// }
+//        stage('Upload Image') {
+// steps{    
+//          script {
+//             docker.withRegistry( '', registryCredential ) {
+//             dockerImage.push()
+//             }
+//         }
+//       }
+//   }
         // Stopping Docker containers for cleaner Docker run
     //  stage('docker stop container') {
     //      steps {
