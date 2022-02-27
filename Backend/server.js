@@ -11,6 +11,7 @@ connectDB();
 // define routes and API
 app.use(express.json({ extended: false}));
 app.use("/api/users", require("./routes/userApi"));
+app.use("/api/courses", require("./routes/courseApi"));
 
 app.get("/", (req, res) => {
     res.send("App up");
