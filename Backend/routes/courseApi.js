@@ -3,7 +3,8 @@ const router = express.Router();
 const auth = require("../middleware/authorization");
 const {check, validationResult } = require("express-validator");
 
-const Course = require("../models/Course")
+const Course = require("../models/Course");
+const { response } = require("express");
 
 router.post(
     "/", 
@@ -32,6 +33,31 @@ router.post(
         }
 });
 
-router.get("/", (req, res)=> res.send("Course route."));
+// get all courses
+router.get("/", async(req, res)=> {
+    try {
+        const courses = await Course.find();
+        res.json(courses);
+    }catch(error) {
+            console.error(error.message);
+            res.status(500).send("Server error")
+    }
+});
+
+// get course by Id
+router.get("/:id", async(req, res)=> {
+    try {
+        const courseById = await Course.findById(req.params.id);
+
+        if(!courseById) {
+            return res.status(400).json({msg:"Product was not found"});
+        }
+
+        res.json(courseById);
+    }catch(error) {
+            console.error(error.message);
+            res.status(500).send("Server error")
+    }
+});
 
 module.exports = router; 
