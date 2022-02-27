@@ -11,7 +11,7 @@ environment{
                      checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/prosaox/StudyBuddy.git']]])
             }
         } 
-    }
+    
      stage('Building Image'){  
             steps{    
                 script {
@@ -19,6 +19,7 @@ environment{
 }
 }
 }
+    }
 //        stage('Upload Image') {
 // steps{    
 //          script {
