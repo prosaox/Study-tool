@@ -16,6 +16,7 @@ const Login = () => {
     const loginClick = () => {
         // do login stuff
         // for now just go to home
+
         navigate("/home");
     }
 
