@@ -4,5 +4,6 @@ export const GET_COURSE = "GET_COURSE";
 export const Courses = "COURSES";
 export const SUCCESSFULL_REGISTER = "SUCCESSFULL_REGISTER";
 export const FAILURE_REGISTER = "FAILURE_REGISTER";
+export const AUTH_ERROR = "AUTH_ERROR"
 
 
