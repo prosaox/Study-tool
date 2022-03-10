@@ -92,6 +92,15 @@ pipeline {
                 }
             }
         }
+                stage('Test')
+        {
+            steps{
+                script {
+                    sh 'cd Backend'
+                    sh 'npm run test'
+                }
+            }
+        }
     stage('Example') {
       steps {
         sh 'npm config ls'
