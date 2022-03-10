@@ -1,6 +1,6 @@
 import axios from "axios";
 import {SET_CURRENT_USER, SUCCESSFULL_REGISTER, FAILURE_REGISTER, ERRORS, AUTH_ERROR} from "./types"
-import {setAuthToken} from "../util/setAuthToken";
+import setAuthToken from "../util/setAuthToken";
 import { getServer } from "../util";
 
 export const setCurrentUser = (user) => async (dispatch) => {
@@ -29,12 +29,12 @@ export const setCurrentUser = (user) => async (dispatch) => {
 export const register = (userData) => async (dispatch) => {
     const config = {
         headers: {
-            "Content-type": "application/json"
+            "Content-Type": "application/json"
         },
     };
  
     try {
-        const res = await axios.post(`${getServer}/api/users`, userData, config);
+        const res = await axios.post(`${getServer()}/api/users`, userData, config);
         dispatch({
             type: SUCCESSFULL_REGISTER,
             payload: res.data

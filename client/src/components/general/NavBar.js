@@ -5,17 +5,17 @@ const NavBar = () => {
     return (
         <nav className="navbar bg-dark">
             <h1>
-                <Link to="./" style={{ color: "white" }}>
+                <Link to="/" style={{ color: "white" }}>
                     <i className="fa-solid fa-building-columns" style={{ color: "white" }}></i> StudyBuddy   
                 </Link>    
             </h1>
 
             <ul>
                 <li>
-                    <Link to="./" style={{ color: "white" }}>Register</Link>
+                    <Link to="/register" style={{ color: "white" }}>Register</Link>
                 </li>
                 <li>
-                    <Link to="./" style={{ color: "white" }}>Login</Link>
+                    <Link to="/login" style={{ color: "white" }}>Login</Link>
                 </li>
             </ul>
         </nav>

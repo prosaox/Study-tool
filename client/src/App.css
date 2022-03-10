@@ -35,7 +35,7 @@ body {
   font-size: 1rem;
   line-height: 1.6;
   background-color: #fff;
-  color: rgb(255, 233, 233);
+  color: #333;
 }
 
 a {
@@ -213,7 +213,7 @@ img {
 .badge-dark,
 .alert-dark {
   background: var(--dark-color);
-  color: rgb(238, 0, 0);
+  color: #fff;
 }
 
 .btn-danger,

@@ -1,10 +1,12 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 const connectDB = require("./config/db")
 
-// if port 5000 not found, process.env.PORT will find available port
-const PORT = process.env.PORT || 5001;
+// if port 5001 not found, process.env.PORT will find available port
+const PORT = 5001;
 
+app.use(cors());
 // database connection
 connectDB();
 
