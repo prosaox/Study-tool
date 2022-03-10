@@ -36,15 +36,5 @@ describe('loading express', function() {
             .get("/api/auth")
         expect(res.statusCode).toEqual(401);
     });
-    // it("correct test, should be true", async() => {
-    //     const random = Math.floor(Math.random() * 100000);
-    //     const res = await request(app)
-    //         .post("/api/users")
-    //         .send({
-    //             name: "aaron",
-    //             email: random + "@gmail.com",
-    //             password: "23411rf"
-    //         })
-    //     expect(res.statusCode).toEqual(200);
-    // });
+
 });

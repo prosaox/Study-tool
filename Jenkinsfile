@@ -11,6 +11,31 @@ environment{
                      checkout([$class: 'GitSCM', branches: [[name: '*/test']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/prosaox/StudyBuddy.git']]])
             }
         } 
+        stage('Start')
+        {
+            steps{
+                script {
+                    sh 'npm install jest supertest express bcryptjs jsonwebtoken mongoose express-validator'
+                }
+            }
+        }
+        stage('Build')
+        {
+            steps{
+                script {
+                    sh 'nodemon'
+                }
+            }
+        }
+        stage('Test')
+        {
+            steps{
+                script {
+                    sh 'npm run test'
+                }
+            }
+        }
+
     
      stage('Building Image'){  
             steps{    
