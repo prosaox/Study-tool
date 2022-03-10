@@ -96,9 +96,11 @@ pipeline {
         {
             steps{
                 script {
-                    sh 'pwd'
-                    dir("Backend")
-                    sh 'pwd'
+                sh "pwd"
+                dir('Backend') {
+                sh "pwd"
+                }
+                sh "pwd"
                     sh 'npm run test'
                 }
             }
