@@ -47,29 +47,26 @@ pipeline {
                 }
             }
         }
-        stage('Build')
-        {
-                steps{
-                dir('Backend') {
-                    sh 'chmod 777 ./node_modules/.bin/nodemon'
-                    sh 'nodemon'
-                }
-            }
-        }
-        // stage('Test')
+        // stage('Build')
         // {
-        //     steps{
-        //         script {
-        //         sh "pwd"
-        //         // sh "chmod +x -R StudyBuddy\ Docker"
+        //         steps{
         //         dir('Backend') {
-        //             sh "chmod +x -R 'StudyBuddy Docker'"
-        //             sh 'npm run test'
-        //         }
-        //         sh "pwd"
+        //             sh 'chmod 777 ./node_modules/.bin/nodemon'
+        //             sh 'nodemon'
         //         }
         //     }
         // }
+        stage('Test')
+        {
+            steps{
+                script {
+                // sh "chmod +x -R StudyBuddy\ Docker"
+                dir('Backend') {
+                    sh 'npm run test'
+                }
+                }
+            }
+        }
     stage('Example') {
       steps {
         sh 'npm config ls'
