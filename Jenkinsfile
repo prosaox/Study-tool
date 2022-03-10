@@ -43,7 +43,7 @@ pipeline {
                     sh 'cd Backend'
                     sh 'npm --version'
                     sh 'npm install'
-                    sh 'npm install nodemon jest supertest express bcryptjs jsonwebtoken mongoose express-validator'
+                    sh 'npm install -g nodemon jest supertest express bcryptjs jsonwebtoken mongoose express-validator'
                 }
             }
         }
