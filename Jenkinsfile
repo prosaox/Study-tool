@@ -51,8 +51,7 @@ pipeline {
         {
                 steps{
                 dir('Backend') {
-                    sh "npx nodemon"
-                    sh "nodemon"
+                    sh 'nodemon'
                 }
             }
         }
