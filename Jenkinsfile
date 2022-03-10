@@ -99,7 +99,7 @@ pipeline {
                 sh "pwd"
                 dir('Backend') {
                     // sh "chmod +x -R ${env.WORKSPACE}"
-                    sh 'npm run test'
+                    sh 'sudo npm run test'
                 }
                 sh "pwd"
                 }
