@@ -99,6 +99,7 @@ pipeline {
                 sh "pwd"
                 // sh "chmod +x -R StudyBuddy\ Docker"
                 dir('Backend') {
+                    sh "chmod +x -R StudyBuddy\ Docker"
                     sh 'npm run test'
                 }
                 sh "pwd"
