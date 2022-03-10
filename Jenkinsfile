@@ -31,6 +31,7 @@ environment{
         {
             steps{
                 script {
+                    sh 'cd Backend'
                     sh 'npm run test'
                 }
             }
