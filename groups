@@ -1,4 +1,5 @@
-# UUID              	Group Name
+# UUID                	Group Name
 #
-user:prosaox        	user/Aaron Nguyen (prosaox)
-user:sayeedkhannabil	user/Abu Sayeed Khan (sayeedkhannabil)
+global:Anonymous-Users	Anonymous Users
+user:prosaox          	user/Aaron Nguyen (prosaox)
+user:sayeedkhannabil  	user/Abu Sayeed Khan (sayeedkhannabil)
