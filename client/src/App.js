@@ -1,20 +1,23 @@
 import React from 'react';
 import {Provider} from "react-redux";
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import {BrowserRouter, Routes ,Route} from "react-router-dom";
 import store from './store';
-
-import './App.css';
 import NavBar from './components/general/NavBar';
+import './App.css';
+
+import Background from "./components/landing/background";
 
 function App() {
   return (
     <Provider store={store}>
-      <Router>
+      <BrowserRouter>
         <div className="App">
           <NavBar />
-          <Route exact path="/"></Route>
+          <Routes>
+            <Route path='/' caseSensitive={false} element={< Background />} />
+          </Routes>
         </div>
-      </Router>
+      </BrowserRouter>
     </Provider>
   );
 }

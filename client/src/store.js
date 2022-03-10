@@ -5,7 +5,7 @@ import rootReducer from "./reducers"
 const initialState = {};
 const middleware = [thunk];
 
-let StrictMode
+let store;
 try {
     store = createStore(
         rootReducer,
