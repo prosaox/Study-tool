@@ -51,7 +51,7 @@ pipeline {
         {
                 steps{
                 dir('Backend') {
-                    sh 'nodemon'
+                    sh 'npm start'
                 }
             }
         }

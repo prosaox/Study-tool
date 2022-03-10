@@ -4,7 +4,8 @@
     "description": "",
     "main": "server.js",
     "scripts": {
-        "test": "jest --detectOpenHandles --forceExit --testEnvironment=node --runInBand"
+        "test": "jest --detectOpenHandles --forceExit --testEnvironment=node --runInBand",
+        "start": "./node_modules/.bin/nodemon server.js"
     },
     "repository": {
         "type": "git",
