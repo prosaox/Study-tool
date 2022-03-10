@@ -76,6 +76,11 @@ pipeline {
   tools {nodejs "node"}
  
   stages {
+              stage('Cloning Git'){
+            steps {
+                     checkout([$class: 'GitSCM', branches: [[name: '*/test']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/prosaox/StudyBuddy.git']]])
+            }
+        } 
     stage('Example') {
       steps {
         sh 'npm config ls'
