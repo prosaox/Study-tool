@@ -98,10 +98,9 @@ pipeline {
                 script {
                 sh "pwd"
                 dir('Backend') {
-                sh "pwd"
+                    sh 'npm run test'
                 }
                 sh "pwd"
-                    sh 'npm run test'
                 }
             }
         }
