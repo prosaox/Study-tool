@@ -51,7 +51,7 @@ pipeline {
         {
                 steps{
                 dir('Backend') {
-                    sh "npm install nodemon"
+                    sh "npx nodemon"
                     sh "nodemon"
                 }
             }
