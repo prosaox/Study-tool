@@ -81,10 +81,23 @@ pipeline {
                      checkout([$class: 'GitSCM', branches: [[name: '*/test']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/prosaox/StudyBuddy.git']]])
             }
         } 
+        stage('Start')
+        {
+            steps{
+                script {
+                    sh 'cd Backend'
+                    sh 'npm --version'
+                    sh 'npm install'
+                    // sh 'npm init'
+                    // sh 'npm install jest supertest express bcryptjs jsonwebtoken mongoose express-validator'
+                }
+            }
+        }
     stage('Example') {
       steps {
         sh 'npm config ls'
       }
+      
     }
   }
 }
