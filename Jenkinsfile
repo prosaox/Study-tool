@@ -1,6 +1,6 @@
 pipeline{  
 agent any
-// tools {nodejs "nodejs"}
+tools { nodejs "nodejs" }
 environment{
     registry = "prosaox/studybuddy"
     dockerImage=''
@@ -17,7 +17,8 @@ environment{
             steps{
                 script {
                     sh 'cd Backend'
-                    // sh 'npm install'
+                    sh 'npm --version'
+                    sh 'npm install'
                     sh 'npm init'
                     sh 'npm install jest supertest express bcryptjs jsonwebtoken mongoose express-validator'
                 }
