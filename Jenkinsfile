@@ -51,7 +51,7 @@ pipeline {
         {
                 steps{
                 dir('Backend') {
-                    sh 'sudo chmod 777 ./node_modules/.bin/nodemon'
+                    sh 'chmod 777 ./node_modules/.bin/nodemon'
                     sh 'npm start'
                 }
             }
