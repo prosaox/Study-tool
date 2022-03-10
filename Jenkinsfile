@@ -98,8 +98,8 @@ pipeline {
                 script {
                 sh "pwd"
                 dir('Backend') {
-                    // sh "chmod +x -R ${env.WORKSPACE}"
-                    sh 'sudo npm run test'
+                    sh "chmod +x -R node_modules/.bin/jest"
+                    sh 'npm run test'
                 }
                 sh "pwd"
                 }
