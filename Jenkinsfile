@@ -1,48 +1,3 @@
-// pipeline{  
-// agent any
-// tools { nodejs "nodejs" }
-// environment{
-//     registry = "prosaox/studybuddy"
-//     dockerImage=''
-//     registryCredential= 'prosaox' 
-// }
-//     stages {
-//         stage('Cloning Git'){
-//             steps {
-//                      checkout([$class: 'GitSCM', branches: [[name: '*/test']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/prosaox/StudyBuddy.git']]])
-//             }
-//         } 
-//         stage('Start')
-//         {
-//             steps{
-//                 script {
-//                     sh 'cd Backend'
-//                     sh 'npm --version'
-//                     sh 'npm install'
-//                     sh 'npm init'
-//                     sh 'npm install jest supertest express bcryptjs jsonwebtoken mongoose express-validator'
-//                 }
-//             }
-//         }
-//         stage('Build')
-//         {
-//             steps{
-//                 script {
-//                     sh 'nodemon'
-//                 }
-//             }
-//         }
-//         stage('Test')
-//         {
-//             steps{
-//                 script {
-//                     sh 'cd Backend'
-//                     sh 'npm run test'
-//                 }
-//             }
-//         }
-
-    
 //      stage('Building Image'){  
 //             steps{    
 //                 script {
@@ -92,20 +47,29 @@ pipeline {
                 }
             }
         }
-                stage('Test')
+        stage('Build')
         {
-            steps{
-                script {
-                sh "pwd"
-                // sh "chmod +x -R StudyBuddy\ Docker"
+                steps{
                 dir('Backend') {
-                    sh "chmod +x -R 'StudyBuddy Docker'"
-                    sh 'npm run test'
-                }
-                sh "pwd"
+                    sh "npm install nodemon"
+                    sh "nodemon"
                 }
             }
         }
+        // stage('Test')
+        // {
+        //     steps{
+        //         script {
+        //         sh "pwd"
+        //         // sh "chmod +x -R StudyBuddy\ Docker"
+        //         dir('Backend') {
+        //             sh "chmod +x -R 'StudyBuddy Docker'"
+        //             sh 'npm run test'
+        //         }
+        //         sh "pwd"
+        //         }
+        //     }
+        // }
     stage('Example') {
       steps {
         sh 'npm config ls'
