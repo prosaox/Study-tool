@@ -52,8 +52,7 @@ pipeline {
                 steps{
                 dir('Backend') {
                     sh 'chmod 777 ./node_modules/.bin/nodemon'
-                    sh 'yarn add nodemon -D'
-                    sh 'npm start'
+                    sh 'nodemon'
                 }
             }
         }
