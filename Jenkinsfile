@@ -97,6 +97,7 @@ pipeline {
             steps{
                 script {
                     sh 'cd Backend'
+                    sh 'pwd'
                     sh 'npm run test'
                 }
             }
