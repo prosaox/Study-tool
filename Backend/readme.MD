@@ -13,7 +13,7 @@ npm init
 
 ## Modules
 ``` node
-npm i express bcryptjs jsonwebtoken mongoose express-validator --save
+npm i jest supertest express bcryptjs jsonwebtoken mongoose express-validator --save
 ```
 
 ## Nodemon global setup
