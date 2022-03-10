@@ -15,6 +15,8 @@ environment{
         {
             steps{
                 script {
+                    sh 'cd Backend'
+                    sh 'npm init'
                     sh 'npm install jest supertest express bcryptjs jsonwebtoken mongoose express-validator'
                 }
             }
