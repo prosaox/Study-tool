@@ -98,7 +98,7 @@ pipeline {
                 script {
                 sh "pwd"
                 dir('Backend') {
-                    sh "chmod +x -R node_modules/.bin/jest"
+                    sh "chmod +x -R node_modules/.bin"
                     sh 'npm run test'
                 }
                 sh "pwd"
