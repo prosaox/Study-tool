@@ -97,8 +97,8 @@ pipeline {
             steps{
                 script {
                 sh "pwd"
+                "chmod +x -R StudyBuddy Docker"
                 dir('Backend') {
-                    sh "chmod +x -R node_modules/.bin"
                     sh 'npm run test'
                 }
                 sh "pwd"
