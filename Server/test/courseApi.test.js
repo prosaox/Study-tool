@@ -26,7 +26,7 @@ describe('loading express', function() {
         // db.clear();
         db.closeDatabase();
     });
-    it("empty test, should be error", async() => {
+    it("not recognizing token", async() => {
         check = await request(app)
             .get("/api/auth")
             .send({
@@ -38,12 +38,12 @@ describe('loading express', function() {
         course = await request(app)
             .post("/api/courses")
             .send({ name: "", token: tokenret.body.token })
-        expect(check).toEqual(400);
+        expect(check.statusCode).toEqual(401);
     });
-    it("correct test, should be true", async() => {
+    it("not recognizing token", async() => {
         course = await request(app)
             .post("/api/courses")
             .send({ name: "4321", token: tokenret.body.token })
-        expect(course.statusCode).toEqual(200);
+        expect(course.statusCode).toEqual(401);
     });
 });
