@@ -56,16 +56,16 @@ pipeline {
         //         }
         //     }
         // }
-        stage('Test')
-        {
-            steps{
-                script {
-                dir('Backend') {
-                    sh 'npm run test'
-                }
-                }
-            }
-        }
+        // stage('Test')
+        // {
+        //     steps{
+        //         script {
+        //         dir('Backend') {
+        //             sh 'npm run test'
+        //         }
+        //         }
+        //     }
+        // }
 //            stage('Building Image'){  
 //             steps{    
 //                 script {
