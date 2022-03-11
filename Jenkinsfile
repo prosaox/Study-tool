@@ -56,32 +56,31 @@ pipeline {
         //         }
         //     }
         // }
-        // stage('Test')
-        // {
-        //     steps{
-        //         script {
-        //         dir('Backend') {
-        //             sh 'npm run test'
-        //         }
-        //         }
-        //     }
-        // }
-//            stage('Building Image'){  
-//             steps{    
-//                 script {
-//                     dockerImage = docker.build registry
-// }
-// }
-//   }
-//          stage('Upload Image') {
-// steps{    
-//          script {
-//             docker.withRegistry( '', registryCredential ) {
-//             dockerImage.push()
-//             }
-//         }
-//       }
-//   }
+        stage('Test')
+        {
+            steps{
+                script {
+                dir('Backend') {
+                    sh 'npm run test'
+                }
+                }
+            }
+        }
+           stage('Building Image'){  
+            steps{    
+                script {
+                    dockerImage = docker.build registry
+}
+}
+  }
+         stage('Upload Image') {
+            steps{    
+         script {
+            docker.withRegistry( '', registryCredential ) {
+            dockerImage.push()
+            }
+        }
+      }
+  }
     }
   }
-}
