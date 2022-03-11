@@ -50,7 +50,7 @@ pipeline {
         // stage('Build')
         // {
         //         steps{
-        //         dir('Backend') {
+        //         dir('Server') {
         //             sh 'chmod 777 ./node_modules/.bin/nodemon'
         //             sh 'nodemon'
         //         }
@@ -84,4 +84,3 @@ steps{
   }
     }
   }
-}
