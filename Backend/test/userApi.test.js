@@ -10,7 +10,6 @@ describe('loading express', function() {
         db.connectDB();
     });
     afterAll(function() {
-        // db.clear();
         db.closeDatabase();
     });
     it("empty test, should be error", async() => {
@@ -62,9 +61,4 @@ describe('loading express', function() {
             })
         expect(res.statusCode).toEqual(400);
     });
-    // it('404 everything else', function testPath(done) {
-    //     request(rounter)
-    //         .get('/foo/bar')
-    //         .expect(404, done);
-    // });
 });

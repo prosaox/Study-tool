@@ -26,9 +26,4 @@ describe('loading express', function() {
             })
         expect(res.statusCode).toEqual(200);
     });
-    // it('404 everything else', function testPath(done) {
-    //     request(rounter)
-    //         .get('/foo/bar')
-    //         .expect(404, done);
-    // });
 });
