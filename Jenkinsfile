@@ -60,18 +60,28 @@ pipeline {
         {
             steps{
                 script {
-                // sh "chmod +x -R StudyBuddy\ Docker"
                 dir('Backend') {
                     sh 'npm run test'
                 }
                 }
             }
         }
-    stage('Example') {
-      steps {
-        sh 'npm config ls'
+           stage('Building Image'){  
+            steps{    
+                script {
+                    dockerImage = docker.build registry
+}
+}
+  }
+         stage('Upload Image') {
+steps{    
+         script {
+            docker.withRegistry( '', registryCredential ) {
+            dockerImage.push()
+            }
+        }
       }
-      
+  }
     }
   }
 }
