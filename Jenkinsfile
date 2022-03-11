@@ -47,15 +47,15 @@ pipeline {
                 }
             }
         }
-        // stage('Build')
-        // {
-        //         steps{
-        //         dir('Backend') {
-        //             sh 'chmod 777 ./node_modules/.bin/nodemon'
-        //             sh 'nodemon'
-        //         }
-        //     }
-        // }
+        stage('Build')
+        {
+                steps{
+                dir('Backend') {
+                    sh 'chmod 777 ./node_modules/.bin/nodemon'
+                    sh 'nodemon'
+                }
+            }
+        }
         stage('Test')
         {
             steps{
