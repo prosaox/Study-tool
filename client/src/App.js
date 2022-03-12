@@ -1,32 +1,41 @@
-import React from 'react';
-import {Provider} from "react-redux";
-import {BrowserRouter, Switch ,Route} from "react-router-dom";
-import store from './store';
-import NavBar from './components/general/NavBar';
-import './App.css';
-
-
-// Background Components
-import Background from "./components/landing/background";
-
-//User Components
-import Register from "./components/auth/Register"
-import Login from "./components/auth/Login"
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './components/home'
+import Login from './components/login.js'
+import Courses from './components/courses';
+import './App.css'
+import { useEffect, useState } from 'react';
 
 function App() {
+    // authentication 
+    const [ token, setToken ] = useState('');
+
+    useEffect(() => {
+        const lsToken = localStorage.getItem("token");
+        if (lsToken) {
+            setToken(lsToken);
+        }
+    }, []);
+
+    if (token) {
+        return (
+            <Router>
+            <Routes>
+                    <Route exact path="/" element={<Home />} />
+                    <Route path='/home' element={<Home />} />
+                    <Route path='/courses' element={<Courses/>} />
+            </Routes>
+          </Router>
+        );
+    }
+
   return (
-    <Provider store={store}>
-      <BrowserRouter>
-        <div className="App">
-          <NavBar />
-
-          <Route exact path='/' component={Background} />
-          <Route exact path='/register' component={Register} />
-          <Route exact path='/login' component={Login} />
-
-        </div>
-      </BrowserRouter>
-    </Provider>
+          <Router>
+          <Routes>
+                    <Route exact path="/" element={<Login  />} />
+                    <Route path='/home' element={<Home />} />
+                    <Route path='/courses' element={<Courses/>} />
+            </Routes>
+          </Router>
   );
 }
 
