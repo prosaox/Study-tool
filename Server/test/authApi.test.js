@@ -1,7 +1,7 @@
 const request = require('supertest');
 const db = require('../config/db')
 const app = require('../app')
-describe('loading express', function() {
+describe('test post', function() {
     beforeEach(function() {
         rounter = require('../routes/authApi');
 
@@ -61,6 +61,15 @@ describe('loading express', function() {
         const res = await request(app)
             .get("/api/auth")
         expect(res.statusCode).toEqual(401);
+    });
+    it("not existing account, should not authorized", async() => {
+        const ress = await request(app)
+            .get("/api/auth")
+            .send({
+                email: "1234@gmail.com",
+                password: "23411r"
+            })
+        expect(ress.statusCode).toEqual(401);
     });
 
 });
