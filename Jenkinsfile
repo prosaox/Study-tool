@@ -27,11 +27,11 @@
 
 pipeline {
   agent any
- environment{
-    registry = "prosaox/studybuddy"
-    dockerImage=''
-    registryCredential= 'prosaox'
-}
+//  environment{
+//     registry = "prosaox/studybuddy"
+//     dockerImage=''
+//     registryCredential= 'prosaox'
+// }
   tools {nodejs "node"}
  
   stages {
