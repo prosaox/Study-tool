@@ -3,10 +3,10 @@ const db = require('../config/db')
 const app = require('../app')
 
 describe('loading express', function() {
-    var token;
+    var tokenret, course;
     const random = Math.floor(Math.random() * 100000);
-    var res;
-    beforeAll(async() => {
+    var res, check;
+    beforeEach(async() => {
         db.connectDB();
         res = await request(app)
             .post("/api/users")
@@ -15,14 +15,8 @@ describe('loading express', function() {
                 email: random + "@gmail.com",
                 password: "23411rf"
             })
-        token = await request(app)
+        tokenret = await request(app)
             .post("/api/auth")
-            .send({
-                email: random + "@gmail.com",
-                password: "23411rf"
-            })
-        token = await request(app)
-            .get("/api/auth")
             .send({
                 email: random + "@gmail.com",
                 password: "23411rf"
@@ -32,16 +26,24 @@ describe('loading express', function() {
         // db.clear();
         db.closeDatabase();
     });
-    it("empty test, should be error", async() => {
-        token = await request(app)
+    it("not recognizing token", async() => {
+        check = await request(app)
+            .get("/api/auth")
+            .send({
+                name: "aaron",
+                email: random + "@gmail.com",
+                password: "23411rf",
+                token: tokenret
+            })
+        course = await request(app)
             .post("/api/courses")
-            .send({ name: "" })
-        expect(token.statusCode).toEqual(400);
+            .send({ name: "", token: tokenret.body.token })
+        expect(check.statusCode).toEqual(401);
     });
-    it("correct test, should be true", async() => {
-        token = await request(app)
+    it("not recognizing token", async() => {
+        course = await request(app)
             .post("/api/courses")
-            .send({ name: "4321" })
-        expect(token.statusCode).toEqual(200);
+            .send({ name: "4321", token: tokenret.body.token })
+        expect(course.statusCode).toEqual(401);
     });
 });
