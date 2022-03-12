@@ -37,7 +37,7 @@ pipeline {
   stages {
               stage('Cloning Git'){
             steps {
-                     checkout([$class: 'GitSCM', branches: [[name: '*/Backend-test']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/prosaox/StudyBuddy.git']]])
+                     checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/prosaox/StudyBuddy.git']]])
             }
         } 
         stage('Start')
