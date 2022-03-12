@@ -33,7 +33,7 @@ pipeline {
   stages {
               stage('Cloning Git'){
             steps {
-                     checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/prosaox/StudyBuddy.git']]])
+                     checkout([$class: 'GitSCM', branches: [[name: '*/Backend-test']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/prosaox/StudyBuddy.git']]])
             }
         } 
         stage('Start')
@@ -43,7 +43,7 @@ pipeline {
                     sh 'cd Server'
                     sh 'npm --version'
                     sh 'npm install'
-                    sh 'npm install -g cors nodemon jest supertest express bcryptjs jsonwebtoken mongoose express-validator'
+                    sh 'npm install -g cors nodemon jest supertest express bcryptjs jsonwebtoken mongoose express-validator --save'
                 }
             }
         }
