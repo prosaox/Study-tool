@@ -24,6 +24,7 @@ function App() {
                     <Route exact path="/" element={<Home />} />
                     <Route path='/home' element={<Home />} />
                     <Route path='/courses' element={<Courses/>} />
+                    <Route path="/logout" element={<Logout />} />
             </Routes>
           </Router>
         );
@@ -35,7 +36,7 @@ function App() {
                     <Route exact path="/" element={<Login  />} />
                     <Route path='/home' element={<Home />} />
                     <Route path='/courses' element={<Courses/>} />
-                    <Route path='/logout' element={<Logout />} />
+                    <Route path="/logout" element={<Logout />} />
             </Routes>
           </Router>
   );
