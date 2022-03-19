@@ -1,7 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './components/home'
-import Login from './components/login.js'
+import Home from './components/home';
+import Login from './components/login.js';
 import Courses from './components/courses';
+import Logout from './components/logout';
 import './App.css'
 import { useEffect, useState } from 'react';
 
@@ -34,6 +35,7 @@ function App() {
                     <Route exact path="/" element={<Login  />} />
                     <Route path='/home' element={<Home />} />
                     <Route path='/courses' element={<Courses/>} />
+                    <Route path='/logout' element={<Logout />} />
             </Routes>
           </Router>
   );
