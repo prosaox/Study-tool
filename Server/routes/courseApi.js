@@ -33,6 +33,37 @@ router.post(
         }
 });
 
+router.put("/update/:id", async(req, res) => {
+
+    const {id: _id} = req.params;
+    const {name: name} = req.body;
+    const {description : description} = req.body;
+    const {start_date : start_date} = req.body;
+    const {end_date : end_date} = req.body;
+
+    const newCourse = {
+        _id,
+        name,
+        description,
+        start_date,
+        end_date
+    }
+
+    Course.findByIdAndUpdate(
+        _id,
+        newCourse,
+        (err, updateCourse) => {
+            if (err) {
+                return res.status(400).json({msg:"Course was not found"});
+            }
+            
+            else {
+                res.json(newCourse);
+            }
+        }
+    )
+});
+
 // get all courses
 router.get("/", async(req, res)=> {
     try {
@@ -50,7 +81,7 @@ router.get("/:id", async(req, res)=> {
         const courseById = await Course.findById(req.params.id);
 
         if(!courseById) {
-            return res.status(400).json({msg:"Product was not found"});
+            return res.status(400).json({msg:"Course was not found"});
         }
 
         res.json(courseById);
@@ -59,5 +90,18 @@ router.get("/:id", async(req, res)=> {
             res.status(500).send("Server error")
     }
 });
+
+router.delete("/delete/:id", async (req, res) => {
+    try {
+        await Course.deleteOne({_id: req.params.id});
+        res.status(204).send(" Course Deleted");
+    } catch(err) {
+        res.status(400).send("Couldn't Find the Course");
+    }
+})
+
+
+
+router.update
 
 module.exports = router; 
