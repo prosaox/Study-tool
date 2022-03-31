@@ -39,9 +39,6 @@ const Topic = () => {
                     <li>
                     <Link to={`tools`}>Tools</Link>
                     </li>
-                    <li>
-                    <Link to={`props-v-state`}>Props v. State</Link>
-                    </li>
                 </ul>
             </div>
         )

@@ -60,4 +60,13 @@ router.get("/:id", async(req, res)=> {
     }
 });
 
+router.delete("/delete/:id", async (req, res) => {
+    try {
+        await Course.deleteOne({_id: req.params.id});
+        res.status(204).send(" Course Deleted");
+    } catch(err) {
+        res.status(400).send("Couldn't Find the Course");
+    }
+})
+
 module.exports = router; 
