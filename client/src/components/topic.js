@@ -34,10 +34,10 @@ const Topic = () => {
                 <p>{topic.description}</p>
                 <ul>
                     <li>
-                    <Link to={`rendering`}>Flash card</Link>
+                    <Link to={`flashcard`}>Flash card</Link>
                     </li>
                     <li>
-                    <Link to={`components`}>Tools</Link>
+                    <Link to={`tools`}>Tools</Link>
                     </li>
                     <li>
                     <Link to={`props-v-state`}>Props v. State</Link>

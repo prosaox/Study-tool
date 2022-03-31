@@ -8,7 +8,8 @@ const Courses = () => {
     const [courses, setCourses] = useState(null);
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
-
+    const imglist=["https://www.w3schools.com/css/img_5terre.jpg","https://www.w3schools.com/css/img_forest.jpg","https://www.w3schools.com/css/img_lights.jpg","https://www.w3schools.com/css/img_mountains.jpg"];
+    const counter =0;
     useEffect(() => {
         const getCourses = async () => {
             try {
@@ -61,9 +62,17 @@ const Courses = () => {
                 <Navbar />
                 <div className='container-fluid'>
                     <h2>Courses</h2>
-                    <ul>
-                    {courses.map(c => <li class='button' key={c._id}>
-                        <Link to={c._id}>{c.name}</Link></li>)}
+                    <ul >
+                    
+                        {courses.map(c => 
+                        <li key={c._id}>
+                            <div class="container">
+                                <img src={imglist[(counter)%4]} alt="course image"/>
+                                <Link to="/courses"><button class="remove">Remove</button></Link>
+                                <Link to={c._id}><button class="link">{c.name}</button></Link>
+                            </div>
+                        </li>)}
+                    
                     </ul>
                 </div>
                 <form onSubmit={createCourse}>
