@@ -16,10 +16,10 @@ router.post(
         }
         
         try {
-            const {name, description, start_date, due_date} = req.body;
+            const {courseId, name, description, start_date, due_date} = req.body;
             const newTask = new Task({
                 userId: req.user.id,
-                courseId: req.course.id,
+                courseId,
                 name,
                 description,
                 start_date,
