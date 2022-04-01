@@ -33,6 +33,7 @@ const Courses = () => {
     });
 
     const createCourse = async (event) => {
+        event.preventDefault();
         const token = localStorage.getItem("token");
         try {
             const res = await fetch("http://localhost:5001/api/courses/", {
@@ -95,10 +96,10 @@ const Courses = () => {
                     
                         {courses.map(c => 
                         <li key={c._id}>
-                            <div class="container">
+                            <div className="container">
                                 <img src={imglist[(counter)%4]} alt="course image"/>
-                                <button onClick={removeCourse.bind(this,c._id)} class="remove">Remove</button>
-                                <Link to={c._id}><button class="link">View detail</button></Link>
+                                <button onClick={removeCourse.bind(this,c._id)} className="remove">Remove</button>
+                                <Link to={c._id}><button className="link">View detail</button></Link>
                                 <h3>{c.name}</h3>
                                 <p>{c.description}</p>
                             </div>
