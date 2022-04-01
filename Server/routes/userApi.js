@@ -1,6 +1,6 @@
 const express = require("express");
 
-const rounter = express.Router();
+const router = express.Router();
 
 const {check, validationResult } = require("express-validator") ;
 
@@ -12,9 +12,18 @@ const jwt = require("jsonwebtoken");
 
 const config = require("../config/keys");
 
-rounter.get("/", (req, res)=> res.send("User route.") );
+router.get("/", async(req, res)=> {
+    try {
+        const users = await User.find();
+        res.json(users);
+    }catch(error) {
+            console.error(error.message);
+            res.status(500).send("Server error")
+    }
+});
 
-rounter.post("/", [check("name", "Name is required").not().isEmpty(), 
+
+router.post("/", [check("name", "Name is required").not().isEmpty(), 
                     check("email", "Please enter valid email").isEmail(),
                     check("password", "Password should have 5 chars").isLength({min: 5})],
                     async (req, res)=> {
@@ -59,4 +68,34 @@ rounter.post("/", [check("name", "Name is required").not().isEmpty(),
     
 } );
 
-module.exports = rounter ;
+
+
+router.put("/update/:id", async(req, res) => {
+
+    const {id: _id} = req.params;
+    const {name: name} = req.body;
+    const {description : description} = req.body;
+
+    const newUser = {
+        _id,
+        name,
+        description,
+    }
+
+    User.findByIdAndUpdate(
+        _id,
+        newUser,
+        (err, updateUser) => {
+            if (err) {
+                return res.status(400).json({msg:"User was not found"});
+            }
+            
+            else {
+                res.json(newUser);
+            }
+        }
+    )
+});
+
+
+module.exports = router ;
