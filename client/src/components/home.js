@@ -27,8 +27,6 @@ const Home = () => {
         getUser();
     },[]);
 
-    console.log("right before check : " + user);
-
     if (user === null) {
         return <p> loading </p>;
     } else {

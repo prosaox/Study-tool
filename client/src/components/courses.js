@@ -5,6 +5,7 @@ import Navbar from './navbar'
 import "./courses.css"
 const Courses = () => {
     const navigate = useNavigate();
+    const [deleteId, setDelete]=useState('');
     const [courses, setCourses] = useState(null);
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
@@ -51,15 +52,42 @@ const Courses = () => {
 
         }
     }
+    const removeCourse = async (id) => {
+        try {
+            const res = await fetch("http://localhost:5001/api/courses/delete/"+id, {
+                method: "DELETE",
+
+                headers: {
+
+                },
+            })
+                .then(res => res.json());
+                // alert(`hello, ${res.status}`);
+            setCourses(res);
+        } catch (err) {
+
+        }
+    };
 
     if (courses == null) {
-        return <p> loading </p>;
+        return <div>
+            <div>
+        <form onSubmit={createCourse}>
+            <div className="form-group">
+                <input id="courseName" value={name} onChange={(e) => setName(e.target.value)} type="Name" placeholder="Course Name" />
+            </div>
+            <div className="form-group">
+                <input id="courseDescription" value={description} onChange={(e) => setDescription(e.target.value)} type="Description" placeholder="Description" />
+            </div>
+            <button type="submit" className="btn btn-dark">Add new class</button>
+    </form></div></div>;
     } else {
         return (
             
             <div>
                 <h1>StudyBuddy</h1>
                 <Navbar />
+                
                 <div className='container-fluid'>
                     <h2>Courses</h2>
                     <ul >
@@ -68,8 +96,10 @@ const Courses = () => {
                         <li key={c._id}>
                             <div class="container">
                                 <img src={imglist[(counter)%4]} alt="course image"/>
-                                <Link to="/courses"><button class="remove">Remove</button></Link>
-                                <Link to={c._id}><button class="link">{c.name}</button></Link>
+                                <button onclick={removeCourse('6246314d76a4b479bbafd260')} class="remove">Remove</button>
+                                <Link to={c._id}><button class="link">View detail</button></Link>
+                                <h3>{c.name}</h3>
+                                <p>{c.description}</p>
                             </div>
                         </li>)}
                     

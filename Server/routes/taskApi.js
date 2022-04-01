@@ -3,7 +3,7 @@ const router = express.Router();
 const auth = require("../middleware/authorization");
 const {check, validationResult } = require("express-validator");
 
-const Course = require("../models/Course");
+const Task = require("../models/Task");
 const { response } = require("express");
 
 router.post(
@@ -12,61 +12,54 @@ router.post(
         const errors = validationResult(req);
 
         if(!errors.isEmpty()){
-            return res.status(400).json({ errors: errors.array()});
+            return res.statusCode(400).json({ errors: errors.array()});
         }
         
         try {
-            const {name, description, start_date, end_date} = req.body;
-            const newCourse = new Course({
+            const {name, description, start_date, due_date} = req.body;
+            const newTask = new Task({
                 userId: req.user.id,
+                courseId: req.course.id,
                 name,
                 description,
                 start_date,
-                end_date
+                due_date
             });
     
-            const course = await newCourse.save();
-            res.json({course});
+            const task = await newTask.save();
+            res.json({task});
         }catch(error) {
             console.error(error.message);
             res.status(500).send("Server error")
         }
 });
 
-// get all courses
+// get all tasks
 router.get("/", async(req, res)=> {
     try {
-        const courses = await Course.find();
-        res.json(courses);
+        const tasks = await Task.find();
+        res.json(tasks);
     }catch(error) {
             console.error(error.message);
             res.status(500).send("Server error")
     }
 });
 
-// get course by Id
+// get task by Id
 router.get("/:id", async(req, res)=> {
     try {
-        const courseById = await Course.findById(req.params.id);
+        const taskById = await Task.findById(req.params.id);
 
-        if(!courseById) {
-            return res.status(400).json({msg:"Product was not found"});
+        if(!taskById) {
+            return res.status(400).json({msg:"Task was not found"});
         }
 
-        res.json(courseById);
+        res.json(taskById);
     }catch(error) {
             console.error(error.message);
             res.status(500).send("Server error")
     }
 });
 
-router.delete("/delete/:id", async (req, res) => {
-    try {
-        await Course.deleteOne({_id: req.params.id});
-        res.status(204).send(" Course Deleted");
-    } catch(err) {
-        res.status(400).send("Couldn't Find the Course");
-    }
-})
 
 module.exports = router; 
