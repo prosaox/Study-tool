@@ -11,6 +11,7 @@ const Courses = () => {
     const [description, setDescription] = useState('');
     const imglist=["https://www.w3schools.com/css/img_5terre.jpg","https://www.w3schools.com/css/img_forest.jpg","https://www.w3schools.com/css/img_lights.jpg","https://www.w3schools.com/css/img_mountains.jpg"];
     const counter =0;
+
     useEffect(() => {
         const getCourses = async () => {
             try {
