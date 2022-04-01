@@ -34,7 +34,11 @@ const Home = () => {
             <div>
                 <h1> StudyBuddy </h1>
                 <Navbar />
-                <p> Welcome, {name}!</p>
+                <p> Welcome, {name} to StudyBuddy!</p>
+                <h6>Self description</h6>
+                <p>{user.degree}</p>
+                <p>{user.school}</p>
+                <p>{user.description}</p>
             </div>
         )
     }

@@ -96,7 +96,7 @@ const Courses = () => {
                         <li key={c._id}>
                             <div class="container">
                                 <img src={imglist[(counter)%4]} alt="course image"/>
-                                <button onclick={removeCourse('6246314d76a4b479bbafd260')} class="remove">Remove</button>
+                                <button onClick={removeCourse.bind(this,c._id)} class="remove">Remove</button>
                                 <Link to={c._id}><button class="link">View detail</button></Link>
                                 <h3>{c.name}</h3>
                                 <p>{c.description}</p>
@@ -105,14 +105,19 @@ const Courses = () => {
                     
                     </ul>
                 </div>
+                <h3>Add new Course</h3>
                 <form onSubmit={createCourse}>
                                 <div className="form-group">
-                                    <input id="courseName" value={name} onChange={(e) => setName(e.target.value)} type="Name" placeholder="Course Name" />
+                                    <h5> Course name</h5>
+                                    <input id="courseName" value={name} onChange={(e) => setName(e.target.value)} type="Name" placeholder="Name" />
                                 </div>
+                                <p></p>
                                 <div className="form-group">
+                                    <h5>Course description</h5>
                                     <input id="courseDescription" value={description} onChange={(e) => setDescription(e.target.value)} type="Description" placeholder="Description" />
                                 </div>
-                                <button type="submit" className="btn btn-dark">Add new class</button>
+                                <p></p>
+                                <button type="submit" className="btn btn-dark">Add</button>
                 </form>
             </div>
         )

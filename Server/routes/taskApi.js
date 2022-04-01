@@ -45,7 +45,6 @@ router.get("/", async(req, res)=> {
             res.status(500).send("Server error")
     }
 });
-
 // get task by Id
 router.get("/:id", async(req, res)=> {
     try {
