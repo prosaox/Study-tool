@@ -21,6 +21,14 @@ const UserSchema = new mongoose.Schema({
     description:{
         type: String,
         required: false
+    },
+    degree:{
+        type: String,
+        required: false
+    },
+    school:{
+        type: String,
+        required: false
     }
 });
 

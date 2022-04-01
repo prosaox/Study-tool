@@ -75,11 +75,14 @@ router.put("/update/:id", async(req, res) => {
     const {id: _id} = req.params;
     const {name: name} = req.body;
     const {description : description} = req.body;
-
+    const {degree : degree} = req.body;
+    const {school : school} = req.body;
     const newUser = {
         _id,
         name,
         description,
+        degree,
+        school,
     }
 
     User.findByIdAndUpdate(

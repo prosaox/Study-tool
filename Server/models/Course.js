@@ -15,11 +15,16 @@ const CourseSchema = new Schema({
     },
     start_date: {
         type: Date,
-        default: Date.now()
     },
     end_date: {
         type: Date
-    }
+    },
+    current_grade:{
+        type:Number,
+    },
+    target_grade:{
+        type:Number,
+    },
 });
 
 const Course = mongoose.model("Course", CourseSchema);

@@ -40,13 +40,16 @@ router.put("/update/:id", async(req, res) => {
     const {description : description} = req.body;
     const {start_date : start_date} = req.body;
     const {end_date : end_date} = req.body;
-
+    const {current_grade : current_grade} = req.body;
+    const {target_grade : target_grade} = req.body;
     const newCourse = {
         _id,
         name,
         description,
         start_date,
-        end_date
+        end_date,
+        current_grade,
+        target_grade
     }
 
     Course.findByIdAndUpdate(
