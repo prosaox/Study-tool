@@ -1,12 +1,52 @@
-.button {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
   }
+  
+  .container img {
+    width: 20%;
+    height: auto;
+  }
+  
+  .container .btn {
+    position: absolute;
+    top: 90%;
+    left:20%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: rgb(7, 170, 69);
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  .container .btn:hover {
+    background-color: black;
+  }
+  .link{
+    position: absolute;
+    left:10%;
+    top:100%;
+    width:10%;
+    background-color: rgb(8, 231, 45);
+    color: white;
+    text-align: center;
+  }
+  .remove{
+    position: absolute;
+    left:0%;
+    top:100%;
+    width: 10%;
+    background-color: rgb(190, 3, 3);
+    color: white;
+    text-align: center;
+  }
+  ul {
+    list-style-type: none;
+   }
+   li{ margin:0 0px 100px 0px; vertical-align:top}

@@ -27,7 +27,7 @@ rounter.post("/", [check("name", "Name is required").not().isEmpty(),
         const {name, email, password } = req.body ;
         let user = await User.findOne({email: email });
         if (user) {
-            return res.status(400).json({errors: [{msg: "User already exists. "}] });
+            return res.status(400).json({errors: [{msg: "Email already exists. "}] });
         }
         user = new User ({
             name, 
