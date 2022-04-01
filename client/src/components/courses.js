@@ -47,7 +47,7 @@ const Courses = () => {
                 .then(res => res.json());
                 // alert(`hello, ${res.status}`);
         } catch (err) {
-
+            console.log("Error in createCourse");
         }
     }
 
