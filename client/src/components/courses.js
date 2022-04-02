@@ -11,6 +11,7 @@ const Courses = () => {
     const [description, setDescription] = useState('');
     const imglist=["https://www.w3schools.com/css/img_5terre.jpg","https://www.w3schools.com/css/img_forest.jpg","https://www.w3schools.com/css/img_lights.jpg","https://www.w3schools.com/css/img_mountains.jpg"];
     const counter =0;
+
     useEffect(() => {
         const getCourses = async () => {
             try {
@@ -32,6 +33,7 @@ const Courses = () => {
     });
 
     const createCourse = async (event) => {
+        event.preventDefault();
         const token = localStorage.getItem("token");
         try {
             const res = await fetch("http://localhost:5001/api/courses/", {
@@ -49,7 +51,7 @@ const Courses = () => {
                 .then(res => res.json());
                 // alert(`hello, ${res.status}`);
         } catch (err) {
-
+            console.log("Error in createCourse");
         }
     }
     const removeCourse = async (id) => {
@@ -94,10 +96,10 @@ const Courses = () => {
                     
                         {courses.map(c => 
                         <li key={c._id}>
-                            <div class="container">
+                            <div className="container">
                                 <img src={imglist[(counter)%4]} alt="course image"/>
-                                <button onClick={removeCourse.bind(this,c._id)} class="remove">Remove</button>
-                                <Link to={c._id}><button class="link">View detail</button></Link>
+                                <button onClick={removeCourse.bind(this,c._id)} className="remove">Remove</button>
+                                <Link to={c._id}><button className="link">View detail</button></Link>
                                 <h3>{c.name}</h3>
                                 <p>{c.description}</p>
                             </div>
