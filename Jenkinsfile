@@ -27,11 +27,11 @@
 
 pipeline {
   agent any
-//  environment{
-//     registry = "prosaox/studybuddy"
-//     dockerImage=''
-//     registryCredential= 'prosaox'
-// }
+ environment{
+    registry = "prosaox/studybuddy"
+    dockerImage=''
+    registryCredential= 'prosaox'
+}
   tools {nodejs "node"}
  
   stages {
@@ -40,17 +40,17 @@ pipeline {
                      checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/prosaox/StudyBuddy.git']]])
             }
         } 
-        stage('Start')
-        {
-            steps{
-                script {
-                    sh 'cd Server'
-                    sh 'npm --version'
-                    sh 'npm install cors'
-                    sh 'npm install -g  nodemon cors jest supertest express bcryptjs jsonwebtoken mongoose express-validator --save'
-                }
-            }
-        }
+        // stage('Start')
+        // {
+        //     steps{
+        //         script {
+        //             sh 'cd Server'
+        //             sh 'npm --version'
+        //             sh 'npm install cors'
+        //             sh 'npm install -g  nodemon cors jest supertest express bcryptjs jsonwebtoken mongoose express-validator --save'
+        //         }
+        //     }
+        // }
         // stage('Build')
         // {
         //         steps{
@@ -60,31 +60,31 @@ pipeline {
         //         }
         //     }
         // }
-        stage('Test')
-        {
-            steps{
-                script {
-                dir('Server') {
-                    sh 'npm run test'
-                }
-                }
-            }
-        }
-//            stage('Building Image'){  
-//             steps{    
+//         stage('Test')
+//         {
+//             steps{
 //                 script {
-//                     dockerImage = docker.build registry
-// }
-// }
-//   }
-//          stage('Upload Image') {
-// steps{    
-//          script {
-//             docker.withRegistry( '', registryCredential ) {
-//             dockerImage.push()
+//                 dir('Server') {
+//                     sh 'npm run test'
+//                 }
+//                 }
 //             }
 //         }
-//       }
-//   }
+           stage('Building Image'){  
+            steps{    
+                script {
+                    dockerImage = docker.build registry
+}
+}
+  }
+         stage('Upload Image') {
+steps{    
+         script {
+            docker.withRegistry( '', registryCredential ) {
+            dockerImage.push()
+            }
+        }
+      }
+  }
     }
   }
