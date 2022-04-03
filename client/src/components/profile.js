@@ -10,6 +10,8 @@ const Profile = () => {
     const [school, setSchool] = useState('');
     const [date, setDate] = useState(Date.now());
     useEffect(() => {
+        let abortController;
+        let unmounted = false;
         const getUser = async () => {
             const token = localStorage.getItem("token");
             try {
@@ -21,14 +23,18 @@ const Profile = () => {
                     },
                 })
                     .then(res => res.json());
+                    if(!unmounted)
+                    {
                 setUser(res);
                 setName(res.name);
                 setDate(res.date);
+                    }
             } catch (err) {
 
             }
         };
         getUser();
+        return () => { unmounted = true };
     },[]);
 
     // console.log("right before check : " + user);

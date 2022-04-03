@@ -7,6 +7,8 @@ const Home = () => {
     const [name, setName] = useState('');
 
     useEffect(() => {
+        let abortController;
+        let unmounted = false;
         const getUser = async () => {
             const token = localStorage.getItem("token");
             try {
@@ -18,13 +20,17 @@ const Home = () => {
                     },
                 })
                     .then(res => res.json());
+                    if(!unmounted)
+                    {
                 setUser(res);
                 setName(res.name);
+                    }
             } catch (err) {
 
             }
         };
         getUser();
+        return () => { unmounted = true };
     },[]);
 
     if (user === null) {
@@ -36,8 +42,9 @@ const Home = () => {
                 <Navbar />
                 <p> Welcome, {name} to StudyBuddy!</p>
                 <h6>Self description</h6>
-                <p>{user.degree}</p>
-                <p>{user.school}</p>
+                <p>Degree:{user.degree}</p>
+                <p>Studying at:{user.school}</p>
+                <h6>My profile</h6>
                 <p>{user.description}</p>
             </div>
         )

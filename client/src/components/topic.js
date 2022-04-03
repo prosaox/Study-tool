@@ -7,7 +7,9 @@ const Topic = () => {
     const [user, setUser] = useState(null);
     const { topicId } = useParams();
     const [topic, setTopic] = useState('');
-    let [tasks,setTasks]=useState(null);
+    const [tasks,setTasks]=useState(null);
+    const [print,setPrint]=useState('');
+
 //task
 const [userId, setUserId] = useState(null);
 const [courseId, setCourseId] = useState(null);
@@ -23,6 +25,8 @@ const [targetGrade,setTargetGrade]=useState(0);
 const [show,setShow]=useState(false);
 
     useEffect(() => {
+        let abortController;
+        let unmounted = false;
         const getTopic = async () => {
             try {
                 const s="http://localhost:5001/api/courses/"+topicId;
@@ -35,8 +39,11 @@ const [show,setShow]=useState(false);
                 })
                     .then(res => res.json());
                     // alert(`hello, ${res.status}`);
+                    if(!unmounted)
+                    {
                 setTopic(res);
                 setCourseId(res._id);
+                    }
             } catch (err) {
 
             }
@@ -52,32 +59,51 @@ const [show,setShow]=useState(false);
                     },
                 })
                     .then(res => res.json());
+                    if(!unmounted)
+                    {
                 setUser(res);
-                setUserId(res._id)
+                setUserId(res._id);
+                    }
             } catch (err) {
 
             }
         };
-        const getTasks = async () => {
+        getUser();
+        getTopic();
+        return () => { unmounted = true };
+    });
+
+    const getTasks = async () => {
+        const token = localStorage.getItem("token");
         try {
-            const res = await fetch("http://localhost:5001/api/tasks/", {
+            const res =await fetch("http://localhost:5001/api/tasks/", {
                 method: "GET",
 
                 headers: {
-
+                    "x-auth-token": token
                 },
             })
                 .then(res => res.json());
-            setTasks(res);
+                setPrint("");
+                let content="";
+                let counter=1;
+                for(let i=0;i<res.length;i++)
+                {
+                    if(res[i].courseId===topicId)
+                    {
+                        var d=res[i].due_date;
+                        d = d.split('T')[0];
+                    content+="Task "+counter+":"+res[i].name+"\nTask info: "+res[i].description+"\n"+"Due date:"+(d)+"\n\n\n";
+                    counter++;
+                    }
+                }
+                setPrint(content);
+                
+            // setTasks(res);
         } catch (err) {
 
         }
     };
-        getTasks();
-        getUser();
-        getTopic();
-    });
-
     const createTask = async () => {
         const token = localStorage.getItem("token");
         try {
@@ -105,7 +131,8 @@ const [show,setShow]=useState(false);
 
         }
         // alert(`hello, ${tasks}`);
-    }
+        getTasks();
+    };
     const updateTopic = async () => {
         const token = localStorage.getItem("token");
         try {
@@ -168,6 +195,9 @@ const [show,setShow]=useState(false);
     </li>
 </ul>
 </form>
+<button onClick={getTasks.bind(this,true)}>Show Tasks</button>
+                <h6>To do list</h6>
+                <h6><pre>{print}</pre></h6>
                 {/* <p>{tasks}</p> */}
                 <form onSubmit={createTask}>
                                 <div className="form-group">
@@ -195,6 +225,10 @@ const [show,setShow]=useState(false);
                 <h6>Target score: {topic.target_grade}</h6>
                 <button onClick={setShow.bind(this,true)}>Update Course Info</button>
                 {/* <p>{tasks}</p> */}
+                <br></br><br></br>
+                <button onClick={getTasks.bind(this,true)}>Show Tasks</button>
+                <h6>To do list</h6>
+                <h5><pre>{print}</pre></h5>
                 <form onSubmit={createTask}>
                                 <div className="form-group">
                                     <input id="courseName" value={name} onChange={(e) => setName(e.target.value)} type="Name" placeholder="Task Name" />
