@@ -84,41 +84,38 @@ const Courses = () => {
     } else {
         return (
             
-            <div>
+            <div class="hero">
                 <h1>StudyBuddy</h1>
                 <Navbar />
-                
-                <div className='container-fluid'>
-                    <h2>Courses</h2>
+                <h2>Courses</h2>
+                <div class="form-style-3">
+                    <form onSubmit={createCourse}>
+                        <fieldset><legend>Add new Course</legend>
+                        <label for="field1"><span>Course Name <span >*</span></span><input value={name} onChange={(e) => setName(e.target.value)} type="text" class="input-field" name="field1" /></label>
+                        <label for="field2"><span>Course Description <span >*</span></span><input value={description} onChange={(e) => setDescription(e.target.value)} type="text" class="input-field" name="field2" /></label>
+                        <label><span> </span><input type="submit" value="Submit" /></label>
+                        </fieldset>
+                        
+                    </form>
+                </div>
+                <div className='container-fluid'> 
                     <ul >
                     
                         {courses.map(c => 
                         <li key={c._id}>
-                            <div class="container">
+                            <div class="card">
                                 <img src={imglist[(counter)%4]} alt="course image"/>
-                                <button onClick={removeCourse.bind(this,c._id)} class="remove">Remove</button>
-                                <Link to={c._id}><button class="link">View detail</button></Link>
-                                <h3>{c.name}</h3>
-                                <p>{c.description}</p>
+                                <div class="container">
+                                    <h3>{c.name}</h3>
+                                    <p>{c.description}</p>
+                                    <button onClick={removeCourse.bind(this,c._id)} class="removeButton">Remove</button>
+                                    <Link to={c._id}><button class="linkButton">View detail</button></Link>
+                                </div>
                             </div>
                         </li>)}
                     
                     </ul>
                 </div>
-                <h3>Add new Course</h3>
-                <form onSubmit={createCourse}>
-                                <div className="form-group">
-                                    <h5> Course name</h5>
-                                    <input id="courseName" value={name} onChange={(e) => setName(e.target.value)} type="Name" placeholder="Name" />
-                                </div>
-                                <p></p>
-                                <div className="form-group">
-                                    <h5>Course description</h5>
-                                    <input id="courseDescription" value={description} onChange={(e) => setDescription(e.target.value)} type="Description" placeholder="Description" />
-                                </div>
-                                <p></p>
-                                <button type="submit" className="btn btn-dark">Add</button>
-                </form>
             </div>
         )
     }

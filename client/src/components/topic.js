@@ -16,17 +16,15 @@ const [courseId, setCourseId] = useState(null);
 const [name, setName] = useState('');
 const [description, setDescription] = useState('');
 const [start, setStart] = useState(Date.now());
-const [due, setDue] = useState('05-05-1999');
+const [due, setDue] = useState('04-07-2022');
 //course
 const [courseName, setCourseName] = useState('');
 const [courseDescription, setCourseDescription] = useState('');
 const [currGrade,setCurrGrade]=useState(0);
 const [targetGrade,setTargetGrade]=useState(0);
 const [show,setShow]=useState(false);
-
     useEffect(() => {
         let abortController;
-        let unmounted = false;
         const getTopic = async () => {
             try {
                 const s="http://localhost:5001/api/courses/"+topicId;
@@ -39,11 +37,10 @@ const [show,setShow]=useState(false);
                 })
                     .then(res => res.json());
                     // alert(`hello, ${res.status}`);
-                    if(!unmounted)
-                    {
+                    
                 setTopic(res);
                 setCourseId(res._id);
-                    }
+                    
             } catch (err) {
 
             }
@@ -59,18 +56,17 @@ const [show,setShow]=useState(false);
                     },
                 })
                     .then(res => res.json());
-                    if(!unmounted)
-                    {
+                    
                 setUser(res);
                 setUserId(res._id);
-                    }
+                
             } catch (err) {
 
             }
         };
         getUser();
         getTopic();
-        return () => { unmounted = true };
+        getTasks();
     });
 
     const getTasks = async () => {
@@ -123,15 +119,14 @@ const [show,setShow]=useState(false);
                     'due_date':due,
                 }),
             })
-                .then(res => res);
+                .then(res => res.json());
                 // setStart(Date.now());
 
-                alert(`hello, ${res.status}`);
+                alert(`hello, ${courseId}`);
         } catch (err) {
 
         }
         // alert(`hello, ${tasks}`);
-        getTasks();
     };
     const updateTopic = async () => {
         const token = localStorage.getItem("token");
@@ -159,7 +154,7 @@ const [show,setShow]=useState(false);
     if(show)
     {
     return (
-            <div>
+            <div class="hero">
                 <h1> StudyBuddy </h1>
                 <Navbar />
                 <h2>{topic.name}</h2>
@@ -216,7 +211,7 @@ const [show,setShow]=useState(false);
     }          
     else{
         return (
-            <div>
+            <div class="hero">
                 <h1> StudyBuddy </h1>
                 <Navbar />
                 <h2>{topic.name}</h2>
@@ -226,9 +221,6 @@ const [show,setShow]=useState(false);
                 <button onClick={setShow.bind(this,true)}>Update Course Info</button>
                 {/* <p>{tasks}</p> */}
                 <br></br><br></br>
-                <button onClick={getTasks.bind(this,true)}>Show Tasks</button>
-                <h6>To do list</h6>
-                <h5><pre>{print}</pre></h5>
                 <form onSubmit={createTask}>
                                 <div className="form-group">
                                     <input id="courseName" value={name} onChange={(e) => setName(e.target.value)} type="Name" placeholder="Task Name" />
@@ -241,6 +233,9 @@ const [show,setShow]=useState(false);
                                 </div>
                                 <button type="submit" className="btn btn-dark">Add new task</button>
                 </form>
+                <h6>To do list</h6>
+                <h5><pre>{print}</pre></h5>
+
             </div>
         )
     }                 
