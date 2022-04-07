@@ -5,6 +5,7 @@ import Courses from './components/courses';
 import Logout from './components/logout';
 import Topic from './components/topic'
 import Profile from './components/profile'
+import CurrUserId from './components/currUserId';
 import './App.css'
 import { useEffect, useState } from 'react';
 
@@ -19,6 +20,7 @@ function App() {
         }
     }, []);
 
+    console.log(CurrUserId());
     if (token) {
         return (
             <Router>
