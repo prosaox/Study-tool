@@ -20,5 +20,5 @@ const FlashCardSchema = new Schema({
     },
 });
 
-const FlashCard = mongoose.model("Task", FlashCardSchema);
+const FlashCard = mongoose.model("FlashCard", FlashCardSchema);
 module.exports = FlashCard;
