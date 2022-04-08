@@ -51,25 +51,25 @@ pipeline {
                 }
             }
         }
-        stage('Build')
-        {
-                steps{
-                dir('Server') {
-                    sh 'chmod 777 ./node_modules/.bin/nodemon'
-                    sh 'nodemon'
-                }
-            }
-        }
-        stage('Test')
-        {
-            steps{
-                script {
-                dir('Server') {
-                    sh 'npm run test'
-                }
-                }
-            }
-        }
+        // stage('Build')
+        // {
+        //         steps{
+        //         dir('Server') {
+        //             sh 'chmod 777 ./node_modules/.bin/nodemon'
+        //             sh 'nodemon'
+        //         }
+        //     }
+        // }
+        // stage('Test')
+        // {
+        //     steps{
+        //         script {
+        //         dir('Server') {
+        //             sh 'npm run test'
+        //         }
+        //         }
+        //     }
+        // }
            stage('Building Image'){  
             steps{    
                 script {
