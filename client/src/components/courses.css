@@ -49,17 +49,22 @@
   .flashcardButton{
     position: relative;
     width:30%;
-    left:-20%;
+    left:-25%;
     background-color: rgb(83, 16, 240);
     color: white;
     text-align: center;
     border-radius: 10px;
     
   }
+  .flashcardButton:hover
+  {
+    transform: scale(1.1);
+    transition-duration: 0.3s;
+  }
   .linkButton{
     position: relative;
     width:30%;
-    left:30%;
+    left:40%;
     background-color: rgb(8, 231, 45);
     color: white;
     text-align: center;
@@ -73,7 +78,7 @@
   }
   .removeButton{
     position: relative;
-    left:10%;
+    left:0%;
     width:30%;
     background-color: rgb(190, 3, 3);
     color: white;

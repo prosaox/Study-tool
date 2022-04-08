@@ -93,7 +93,6 @@ const FlashCard = () => {
                     </form>
                 </div>
                 <ul class="row">
-                    
                     {flashcard.map(c => 
                     <li key={c._id}>
                         <div class="cardD">
@@ -103,7 +102,7 @@ const FlashCard = () => {
                                     <p>{c.content}</p>
                                 </div>
                                 <button class="removeButton" onClick={removeFlashcard.bind(this,c._id)}>Remove</button>
-                                <button class="revealButton" onClick={toggle_element.bind(this,c._id)}>Reveal</button>
+                                <button class="revealButton" onClick={toggle_element.bind(this,c._id)}>Reveal/Hide</button>
                             </div>
                         </div>
                     </li>)}                
