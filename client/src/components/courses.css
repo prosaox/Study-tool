@@ -46,6 +46,16 @@
     border-radius: 25px;
     padding: 20px;
   }
+  .flashcardButton{
+    position: relative;
+    width:30%;
+    left:-20%;
+    background-color: rgb(83, 16, 240);
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    
+  }
   .linkButton{
     position: relative;
     width:30%;

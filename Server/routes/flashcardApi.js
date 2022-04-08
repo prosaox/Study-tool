@@ -3,12 +3,12 @@ const router = express.Router();
 const auth = require("../middleware/authorization");
 const {check, validationResult } = require("express-validator");
 
+const FlashCard = require("../models/FlashCard");
 const { response } = require("express");
-const Flashcard = require("../models/Flashcard");
 
 router.post(
     "/", 
-    [auth, [check("word", "Word is Required").not().isEmpty()]] ,async(req, res) => {
+    [auth, [check("title", "Title is Required").not().isEmpty()]] ,async(req, res) => {
         const errors = validationResult(req);
 
         if(!errors.isEmpty()){
@@ -16,27 +16,31 @@ router.post(
         }
         
         try {
-            const {courseId, name, description} = req.body;
-            const newCard = new Flashcard({
+
+            const {courseId, title, content} = req.body;
+            const newFlashcard = new FlashCard({
                 userId: req.user.id,
                 courseId,
-                word,
-                definition,
+                title,
+                content,
             });
-            const card = await newCard.save();
-            res.json({card});
+
+            const flashcard = await newFlashcard.save();
+            res.json({flashcard});
         }catch(error) {
             console.error(error.message);
             res.status(500).send("Server error")
         }
 });
+
 router.get("/", async(req, res)=> {
     try {
-        const cards = await Flashcard.find();
-        res.json(cards);
+        const flashcards = await FlashCard.find();
+        res.json(flashcards);
     }catch(error) {
             console.error(error.message);
             res.status(500).send("Server error")
     }
 });
+
 module.exports = router; 

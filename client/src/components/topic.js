@@ -146,7 +146,7 @@ const [show,setShow]=useState(false);
                 }),
             })
                 .then(res => res);
-            // setDate(res.date);
+            alert(`hello, ${res.status}`);
         } catch (err) {
 
         }
