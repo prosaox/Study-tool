@@ -19,7 +19,6 @@ router.post(
 
             const {courseId, title, content} = req.body;
             const newFlashcard = new FlashCard({
-                userId: req.user.id,
                 courseId,
                 title,
                 content,
@@ -42,5 +41,12 @@ router.get("/", async(req, res)=> {
             res.status(500).send("Server error")
     }
 });
-
+router.delete("/delete/:id", async (req, res) => {
+    try {
+        await FlashCard.deleteOne({_id: req.params.id});
+        res.status(204).send(" Card Deleted");
+    } catch(err) {
+        res.status(400).send("Couldn't Find the Card");
+    }
+});
 module.exports = router; 
