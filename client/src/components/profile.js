@@ -11,7 +11,6 @@ const Profile = () => {
     const [date, setDate] = useState(Date.now());
     useEffect(() => {
         let abortController;
-        let unmounted = false;
         const getUser = async () => {
             const token = localStorage.getItem("token");
             try {
@@ -23,18 +22,16 @@ const Profile = () => {
                     },
                 })
                     .then(res => res.json());
-                    if(!unmounted)
-                    {
+                    
                 setUser(res);
                 setName(res.name);
                 setDate(res.date);
-                    }
+                    
             } catch (err) {
 
             }
         };
         getUser();
-        return () => { unmounted = true };
     },[]);
 
     // console.log("right before check : " + user);
@@ -70,7 +67,7 @@ const Profile = () => {
         return <p> loading </p>;
     } else {
         return (
-            <div>
+            <div class="heroprofile">
                 <h1> StudyBuddy </h1>
                 <Navbar />
                 <h5> Update your information </h5>
@@ -80,7 +77,7 @@ const Profile = () => {
     <li>
         <label>Phone number</label>
         <input type="tel" name="field3" class="field-long" />
-    </li>
+    </li><br></br>
     <li>
         <label>Degree</label>
         <select name="field4" class="field-select" value={degree} onChange={(e) => setDegree(e.target.value)}>

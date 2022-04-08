@@ -101,7 +101,7 @@ router.delete("/delete/:id", async (req, res) => {
     } catch(err) {
         res.status(400).send("Couldn't Find the Course");
     }
-})
+});
 
 
 module.exports = router; 

@@ -12,14 +12,13 @@ router.post(
         const errors = validationResult(req);
 
         if(!errors.isEmpty()){
-            return res.statusCode(400).json({ errors: errors.array()});
+            return res.status(400).json({ errors: errors.array()});
         }
         
         try {
 
             const {courseId, title, content} = req.body;
             const newFlashcard = new FlashCard({
-                userId: req.user.id,
                 courseId,
                 title,
                 content,
@@ -42,21 +41,12 @@ router.get("/", async(req, res)=> {
             res.status(500).send("Server error")
     }
 });
-
-
-router.get("/:id", async(req, res)=> {
+router.delete("/delete/:id", async (req, res) => {
     try {
-        const flashcardById = await FlashCard.findById(req.params.id);
-
-        if(!flashcardById) {
-            return res.status(400).json({msg:"Flashcard was not found"});
-        }
-
-        res.json(flashcardById);
-    }catch(error) {
-            console.error(error.message);
-            res.status(500).send("Server error")
+        await FlashCard.deleteOne({_id: req.params.id});
+        res.status(204).send(" Card Deleted");
+    } catch(err) {
+        res.status(400).send("Couldn't Find the Card");
     }
 });
-
 module.exports = router; 
