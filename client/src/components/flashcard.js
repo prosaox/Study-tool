@@ -17,7 +17,7 @@ const FlashCard = () => {
         const getFlashcard = async () => {
             const token = localStorage.getItem("token");
             try {
-                const res =await fetch("http://localhost:5001/api/flashcards/", {
+                const res =await fetch("http://localhost:5001/api/flashcards/"+topicId, {
                     method: "GET",
     
                     headers: {

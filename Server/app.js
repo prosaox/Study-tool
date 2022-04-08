@@ -11,6 +11,7 @@ app.use("/api/auth", require("./routes/authApi"));
 app.use("/api/courses", require("./routes/courseApi"));
 app.use("/api/tasks", require("./routes/taskApi"));
 app.use("/api/flashcards", require("./routes/flashcardApi"));
+app.use("/api/exams", require("./routes/examApi"));
 app.get("/", (req, res) => {
     res.send("App up");
 });
