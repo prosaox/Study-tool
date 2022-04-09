@@ -76,7 +76,7 @@ const Courses = () => {
             <div>
         <form onSubmit={createCourse}>
             <div className="form-group">
-                <input id="courseName" value={name} onChange={(e) => setName(e.target.value)} type="Name" placeholder="Course Name" />
+                <input id="courseName" value={name} onChange={(e) => setName(e.target.value)} required type="Name" placeholder="Course Name" />
             </div>
             <div className="form-group">
                 <input id="courseDescription" value={description} onChange={(e) => setDescription(e.target.value)} type="Description" placeholder="Description" />
@@ -93,8 +93,8 @@ const Courses = () => {
                 <div class="form-style-3">
                     <form onSubmit={createCourse}>
                         <fieldset><legend>Add new Course</legend>
-                        <label for="field1"><span>Course Name <span >*</span></span><input value={name} onChange={(e) => setName(e.target.value)} type="text" class="input-field" name="field1" /></label>
-                        <label for="field2"><span>Course Description <span >*</span></span><input value={description} onChange={(e) => setDescription(e.target.value)} type="text" class="input-field" name="field2" /></label>
+                        <label for="field1"><span>Course Name <span >*</span></span><input value={name} onChange={(e) => setName(e.target.value)} type="text" class="input-field" name="field1" required/></label>
+                        <label for="field2"><span>Course Description</span><input value={description} onChange={(e) => setDescription(e.target.value)} type="text" class="input-field" name="field2" /></label>
                         <label><span> </span><input type="submit" value="Submit" /></label>
                         </fieldset>
                         
@@ -113,6 +113,7 @@ const Courses = () => {
                                     <button onClick={removeCourse.bind(this,c._id)} class="removeButton">Remove</button>
                                     <Link to={"topic/"+c._id}><button class="linkButton">View detail</button></Link>
                                     <Link to={"flashcard/"+c._id}><button class="flashcardButton">Flash Card</button></Link>
+                                    <Link to={"exam/"+c._id}><button class="examButton">Exams</button></Link>
                                 </div>
                                 </div>
                         </li>)}

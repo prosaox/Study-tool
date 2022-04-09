@@ -16,10 +16,11 @@ router.post(
         }
         try {
 
-            const {courseId, title, distribute} = req.body;
+            const {courseId, title,current, distribute} = req.body;
             const newExam = new Exam({
                 courseId,
                 title,
+                current,
                 distribute,
             });
             const exam = await newExam.save();
