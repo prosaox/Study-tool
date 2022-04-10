@@ -31,7 +31,7 @@ const Home = () => {
     },[]);
 
     if (user === null) {
-        return <p> loading </p>;
+        return <p>{user===null} loading </p>;
     } else {
         return (
             <div class="herohome">

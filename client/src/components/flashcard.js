@@ -85,8 +85,8 @@ const FlashCard = () => {
                 <div class="form-style-3">
                     <form onSubmit={createFlashCard}>
                         <fieldset><legend>Add new Card</legend>
-                        <label for="field1"><span>Title <span >*</span></span><input value={title} onChange={(e) => setTitle(e.target.value)} type="text" class="input-field" name="field1" /></label>
-                        <label for="field2"><span>Definition <span >*</span></span><input value={content} onChange={(e) => setContent(e.target.value)} type="text" class="input-field" name="field2" /></label>
+                        <label for="field1"><span>Title <span >*</span></span><input value={title} onChange={(e) => setTitle(e.target.value)} type="text" class="input-field" name="field1" required/></label>
+                        <label for="field2"><span>Definition <span >*</span></span><input value={content} onChange={(e) => setContent(e.target.value)} type="text" class="input-field" name="field2" required/></label>
                         <label><input type="submit" value="Add" /></label>
                         </fieldset>
                         

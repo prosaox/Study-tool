@@ -78,8 +78,18 @@ router.get("/", async(req, res)=> {
     }
 });
 
-// get course by Id
+// get course by user Id
 router.get("/:id", async(req, res)=> {
+    try {
+        const course = await Course.find({userId:req.params.id});
+        res.json(course);
+    }catch(error) {
+            console.error(error.message);
+            res.status(500).send("Server error")
+    }
+});
+//get course by course ID
+router.get("/courseId/:id", async(req, res)=> {
     try {
         const courseById = await Course.findById(req.params.id);
 

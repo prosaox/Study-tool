@@ -25,7 +25,7 @@ const [show,setShow]=useState(false);
         let abortController;
         const getTopic = async () => {
             try {
-                const s="http://localhost:5001/api/courses/"+topicId;
+                const s="http://localhost:5001/api/courses/courseId/"+topicId;
                 const res = await fetch(s, {
                     method: "GET",
 
