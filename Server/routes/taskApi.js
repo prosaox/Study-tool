@@ -45,16 +45,11 @@ router.get("/", async(req, res)=> {
             res.status(500).send("Server error")
     }
 });
-// get task by Id
+// get task by user Id
 router.get("/:id", async(req, res)=> {
     try {
-        const taskById = await Task.findById(req.params.id);
-
-        if(!taskById) {
-            return res.status(400).json({msg:"Task was not found"});
-        }
-
-        res.json(taskById);
+        const task = await Task.find({userId:req.params.id});
+        res.json(task);
     }catch(error) {
             console.error(error.message);
             res.status(500).send("Server error")

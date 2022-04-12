@@ -90,6 +90,21 @@
     transform: scale(1.1);
     transition-duration: 0.3s;
   }
+  .examButton{
+    position: relative;
+    left:0%;
+    top:40%;
+    width:30%;
+    background-color: rgb(23, 35, 204);
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+  }
+  .examButton:hover
+  {
+    transform: scale(1.1);
+    transition-duration: 0.3s;
+  }
   .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
   }

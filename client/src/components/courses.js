@@ -3,8 +3,11 @@ import { useNavigate ,Link} from "react-router-dom";
 import { Button,Modal} from 'react-bootstrap';
 import Navbar from './navbar'
 import "./courses.css"
+
 const Courses = () => {
     const navigate = useNavigate();
+    const [user, setUser] = useState(null);
+    const [userId, setUserId] = useState(null);
     const [deleteId, setDelete]=useState('');
     const [courses, setCourses] = useState(null);
     const [name, setName] = useState('');
@@ -13,9 +16,29 @@ const Courses = () => {
     const counter =0;
 
     useEffect(() => {
+        const getUser = async () => {
+            const token = localStorage.getItem("token");
+            try {
+                const res = await fetch("http://localhost:5001/api/auth/", {
+                    method: "GET",
+
+                    headers: {
+                        "x-auth-token": token
+                    },
+                })
+                    .then(res => res.json());
+                    
+                setUser(res);
+                setUserId(res._id);
+                
+            } catch (err) {
+
+            }
+        };
+        getUser();
         const getCourses = async () => {
             try {
-                const res = await fetch("http://localhost:5001/api/courses/", {
+                const res = await fetch("http://localhost:5001/api/courses/"+userId, {
                     method: "GET",
 
                     headers: {
@@ -23,12 +46,15 @@ const Courses = () => {
                     },
                 })
                     .then(res => res.json());
-                    // alert(`hello, ${res.status}`);
                 setCourses(res);
             } catch (err) {
 
             }
         };
+        if(user!==null)
+        {
+            getCourses();
+        }
         getCourses();
     });
 
@@ -49,7 +75,6 @@ const Courses = () => {
                 }),
             })
                 .then(res => res.json());
-                // alert(`hello, ${res.status}`);
         } catch (err) {
             console.log("Error in createCourse");
         }
@@ -64,7 +89,6 @@ const Courses = () => {
                 },
             })
                 .then(res => res.json());
-                // alert(`hello, ${res.status}`);
             setCourses(res);
         } catch (err) {
 
@@ -76,7 +100,7 @@ const Courses = () => {
             <div>
         <form onSubmit={createCourse}>
             <div className="form-group">
-                <input id="courseName" value={name} onChange={(e) => setName(e.target.value)} type="Name" placeholder="Course Name" />
+                <input id="courseName" value={name} onChange={(e) => setName(e.target.value)} required type="Name" placeholder="Course Name" />
             </div>
             <div className="form-group">
                 <input id="courseDescription" value={description} onChange={(e) => setDescription(e.target.value)} type="Description" placeholder="Description" />
@@ -93,8 +117,8 @@ const Courses = () => {
                 <div class="form-style-3">
                     <form onSubmit={createCourse}>
                         <fieldset><legend>Add new Course</legend>
-                        <label for="field1"><span>Course Name <span >*</span></span><input value={name} onChange={(e) => setName(e.target.value)} type="text" class="input-field" name="field1" /></label>
-                        <label for="field2"><span>Course Description <span >*</span></span><input value={description} onChange={(e) => setDescription(e.target.value)} type="text" class="input-field" name="field2" /></label>
+                        <label for="field1"><span>Course Name <span >*</span></span><input value={name} onChange={(e) => setName(e.target.value)} type="text" class="input-field" name="field1" required/></label>
+                        <label for="field2"><span>Course Description</span><input value={description} onChange={(e) => setDescription(e.target.value)} type="text" class="input-field" name="field2" /></label>
                         <label><span> </span><input type="submit" value="Submit" /></label>
                         </fieldset>
                         
@@ -113,6 +137,7 @@ const Courses = () => {
                                     <button onClick={removeCourse.bind(this,c._id)} class="removeButton">Remove</button>
                                     <Link to={"topic/"+c._id}><button class="linkButton">View detail</button></Link>
                                     <Link to={"flashcard/"+c._id}><button class="flashcardButton">Flash Card</button></Link>
+                                    <Link to={"exam/"+c._id}><button class="examButton">Grade tracking</button></Link>
                                 </div>
                                 </div>
                         </li>)}

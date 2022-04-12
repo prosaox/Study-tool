@@ -20,14 +20,12 @@ const [due, setDue] = useState('04-07-2022');
 //course
 const [courseName, setCourseName] = useState('');
 const [courseDescription, setCourseDescription] = useState('');
-const [currGrade,setCurrGrade]=useState(0);
-const [targetGrade,setTargetGrade]=useState(0);
 const [show,setShow]=useState(false);
     useEffect(() => {
         let abortController;
         const getTopic = async () => {
             try {
-                const s="http://localhost:5001/api/courses/"+topicId;
+                const s="http://localhost:5001/api/courses/courseId/"+topicId;
                 const res = await fetch(s, {
                     method: "GET",
 
@@ -141,8 +139,6 @@ const [show,setShow]=useState(false);
                 body: JSON.stringify({
                     'name': courseName,
                     'description':courseDescription,
-                    'current_grade':currGrade,
-                    'target_grade':targetGrade,
                 }),
             })
                 .then(res => res);
@@ -158,32 +154,14 @@ const [show,setShow]=useState(false);
                 <h1> StudyBuddy </h1>
                 <Navbar />
                 <h2>{topic.name}</h2>
-                <h5>Course description: {topic.description}</h5>
-                <h6>Current score: {topic.current_grade}</h6>
-                <h6>Target score: {topic.target_grade}</h6>
+                <h5>{topic.description}</h5>
                 <button onClick={setShow.bind(this,false)}>Update Course Info</button>
                 <form onSubmit={updateTopic}>
 <ul class="form-style-1">
-    <li><label>Course Name <span class="required">*</span></label><input type="text" name="field1" class="field-long" value={courseName} onChange={(e) => setCourseName(e.target.value)}/></li>
+    <li><label>Course Name <span class="required">*</span></label><input type="text" name="field1" class="field-long" required value={courseName} onChange={(e) => setCourseName(e.target.value)}/></li>
     <li>
         <label>Course description </label>
         <textarea name="field5" id="field5" class="field-long field-textarea" value={courseDescription} onChange={(e) => setCourseDescription(e.target.value)}></textarea>
-    </li>
-        <li>
-        <label>Current score</label>
-        <select name="field4" class="field-select" value={currGrade} onChange={(e) => setCurrGrade(parseInt(e.target.value))}>
-        <option value="0">0</option><option value="10">10</option><option value="20">20</option><option value="30">30</option>
-        <option value="40">40</option><option value="50">50</option><option value="60">60</option><option value="70">70</option>
-        <option value="80">80</option><option value="90">90</option><option value="100">100</option>
-        </select>
-    </li>
-    <li>
-        <label>Target score</label>
-        <select name="field4" class="field-select" value={targetGrade} onChange={(e) => setTargetGrade(e.target.value)}>
-        <option value="0">0</option><option value="10">10</option><option value="20">20</option><option value="30">30</option>
-        <option value="40">40</option><option value="50">50</option><option value="60">60</option><option value="70">70</option>
-        <option value="80">80</option><option value="90">90</option><option value="100">100</option>
-        </select>
     </li>
     <li>
         <input type="submit" value="Submit" />
@@ -215,9 +193,7 @@ const [show,setShow]=useState(false);
                 <h1> StudyBuddy </h1>
                 <Navbar />
                 <h2>{topic.name}</h2>
-                <h5>Course description: {topic.description}</h5>
-                <h6>Current score: {topic.current_grade}</h6>
-                <h6>Target score: {topic.target_grade}</h6>
+                <h5>{topic.description}</h5>
                 <button onClick={setShow.bind(this,true)}>Update Course Info</button>
                 {/* <p>{tasks}</p> */}
                 <br></br><br></br>

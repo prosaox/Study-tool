@@ -9,6 +9,7 @@ import CurrUserId from './components/currUserId';
 import './App.css'
 import { useEffect, useState } from 'react';
 import FlashCard from './components/flashcard';
+import Exam from './components/exam';
 
 function App() {
     // authentication 
@@ -33,6 +34,7 @@ function App() {
                     <Route path="/logout" element={<Logout />} />
                     <Route path="/courses/topic/:topicId" element={<Topic />}/>
                     <Route path="/courses/flashcard/:topicId" element={<FlashCard />}/>
+                    <Route path="/courses/exam/:topicId" element={<Exam />}/>
             </Routes>
           </Router>
         );
@@ -48,6 +50,7 @@ function App() {
                     <Route path="/logout" element={<Logout />} />
                     <Route path="/courses/topic/:topicId" element={<Topic />}/>
                     <Route path="/courses/flashcard/:topicId" element={<FlashCard />}/>
+                    <Route path="/courses/exam/:topicId" element={<Exam />}/>
             </Routes>
           </Router>
   );

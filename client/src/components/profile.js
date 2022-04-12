@@ -73,7 +73,7 @@ const Profile = () => {
                 <h5> Update your information </h5>
                 <form onSubmit={updateUser}>
 <ul class="form-style-1">
-    <li><label>Full Name <span class="required">*</span></label><input type="text" name="field1" class="field-long" value={name} onChange={(e) => setName(e.target.value)}/></li>
+    <li><label>Full Name <span class="required">*</span></label><input type="text" name="field1" class="field-long" value={name} onChange={(e) => setName(e.target.value)} required/></li>
     <li>
         <label>Phone number</label>
         <input type="tel" name="field3" class="field-long" />

@@ -1,0 +1,45 @@
+
+   .form-style-3{
+    max-width: 450px;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    margin: auto;
+    
+  }
+  
+  .herohome{
+      background-color: aliceblue;
+  }
+  table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 50%;
+    margin: auto;
+    background-color: rgb(229, 248, 144);
+    border-radius: 25px;
+    border: rgb(147, 219, 12);
+    text-align: center;
+    color: rgb(3, 240, 43);
+  }
+  
+  table td, table th {
+    padding: 8px;
+  }
+  table th
+  {
+      color:red;
+  }
+  .close {
+    position: absolute;
+    right: 32px;
+    top: 32px;
+    width: 32px;
+    height: 32px;
+    opacity: 0.3;
+  }
+  .xButton{
+    position: relative;
+    background-color: rgb(190, 3, 3);
+    color: white;
+    text-align: center;
+    border-radius: 50px;
+  }

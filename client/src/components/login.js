@@ -45,7 +45,16 @@ const Login = () => {
         } catch (err) {
 
         }
-        navigate("/home");
+        const token = localStorage.getItem("token");
+        if(token)
+        {
+            if(token==="undefined"){
+                alert("Wrong email or password");
+            }
+            else{
+                navigate("/home");
+            }
+        }
     }
 
     // Signup button handler
@@ -70,7 +79,16 @@ const Login = () => {
         } catch (err) {
 
         }
-        navigate("/home");
+        const token = localStorage.getItem("token");
+        if(token)
+        {
+            if(token==="undefined"){
+                alert("Email has been used to sign up previously");
+            }
+            else{
+                navigate("/home");
+            }
+        }
     }
     if (showSignInView) {
         return (
