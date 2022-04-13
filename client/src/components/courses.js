@@ -36,6 +36,8 @@ const Courses = () => {
             }
         };
         getUser();
+    });
+    useEffect(() => {
         const getCourses = async () => {
             try {
                 const res = await fetch("http://localhost:5001/api/courses/"+userId, {

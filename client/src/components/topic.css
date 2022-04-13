@@ -182,3 +182,11 @@ button{
     color:red;
     font-weight:normal;
   }
+  .note{
+    left:50%;
+    text-align: center;
+    margin:auto;
+    font-size:xx-large;
+    color: red;
+    white-space: pre-wrap;
+  }
