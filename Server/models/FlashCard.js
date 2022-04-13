@@ -1,11 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const FlashCardSchema = new Schema({
-    userId: {
-        type: Schema.Types.ObjectId,
-        required: true,
-    },
-
     courseId: {
         type: Schema.Types.ObjectId,
         required: true,
