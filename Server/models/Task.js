@@ -21,7 +21,8 @@ const TaskSchema = new Schema({
         default: Date.now()
     },
     due_date: {
-        type: Date
+        type: Date,
+        require: true
     }
 });
 

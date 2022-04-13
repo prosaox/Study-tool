@@ -16,7 +16,7 @@ const [courseId, setCourseId] = useState(null);
 const [name, setName] = useState('');
 const [description, setDescription] = useState('');
 const [start, setStart] = useState(Date.now());
-const [due, setDue] = useState('04-07-2022');
+const [due, setDue] = useState(Date.now());
 //course
 const [courseName, setCourseName] = useState('');
 const [courseDescription, setCourseDescription] = useState('');
@@ -168,22 +168,21 @@ const [show,setShow]=useState(false);
     </li>
 </ul>
 </form>
-<button onClick={getTasks.bind(this,true)}>Show Tasks</button>
+                <div class="form-style-3">
+                    <form onSubmit={createTask}>
+                        <fieldset><legend>Add new Task</legend>
+                        <label for="field1"><span>Task name <span >*</span></span><input value={name} onChange={(e) => setName(e.target.value)} type="text" class="input-field" name="field1" required/></label>
+                        <label for="field2"><span>Task description <span >*</span></span><input value={description} onChange={(e) => setDescription(e.target.value)} type="text" class="input-field" name="field2"/></label>
+                        <label for="field3"><span>Deadline <span >*</span></span><input value={due} onChange={(e) => setDue(e.target.value)} type="date" class="input-field" name="field3"required/></label>
+                        <label><input type="submit" value="Add" /></label>
+                        </fieldset>
+                        
+                    </form>
+                </div>
+                <div class="note">
                 <h6>To do list</h6>
-                <h6><pre>{print}</pre></h6>
-                {/* <p>{tasks}</p> */}
-                <form onSubmit={createTask}>
-                                <div className="form-group">
-                                    <input id="courseName" value={name} onChange={(e) => setName(e.target.value)} type="Name" placeholder="Task Name" />
-                                </div>
-                                <div className="form-group">
-                                    <input id="courseDescription" value={description} onChange={(e) => setDescription(e.target.value)} type="Task description" placeholder="Description" />
-                                </div>
-                                <div className="form-group">
-                                    <input id="courseDue" value={due} onChange={(e) => setDue(e.target.value)} type="Task due date" placeholder="Due date"/>
-                                </div>
-                                <button type="submit" className="btn btn-dark">Add new task</button>
-                </form>
+                <h6>{print}</h6></div>
+
             </div>
         )
     }          
@@ -197,20 +196,20 @@ const [show,setShow]=useState(false);
                 <button onClick={setShow.bind(this,true)}>Update Course Info</button>
                 {/* <p>{tasks}</p> */}
                 <br></br><br></br>
-                <form onSubmit={createTask}>
-                                <div className="form-group">
-                                    <input id="courseName" value={name} onChange={(e) => setName(e.target.value)} type="Name" placeholder="Task Name" />
-                                </div>
-                                <div className="form-group">
-                                    <input id="courseDescription" value={description} onChange={(e) => setDescription(e.target.value)} type="Task description" placeholder="Description" />
-                                </div>
-                                <div className="form-group">
-                                    <input id="courseDue" value={due} onChange={(e) => setDue(e.target.value)} type="Task due date" placeholder="Due date"/>
-                                </div>
-                                <button type="submit" className="btn btn-dark">Add new task</button>
-                </form>
-                <h6>To do list</h6>
-                <h5><pre>{print}</pre></h5>
+                <div class="form-style-3">
+                    <form onSubmit={createTask}>
+                        <fieldset><legend>Add new Task</legend>
+                        <label for="field1"><span>Task name <span >*</span></span><input value={name} onChange={(e) => setName(e.target.value)} type="text" class="input-field" name="field1" required/></label>
+                        <label for="field2"><span>Task description <span >*</span></span><input value={description} onChange={(e) => setDescription(e.target.value)} type="text" class="input-field" name="field2"/></label>
+                        <label for="field3"><span>Deadline <span >*</span></span><input value={due} onChange={(e) => setDue(e.target.value)} type="date" class="input-field" name="field3"required/></label>
+                        <label><input type="submit" value="Add" /></label>
+                        </fieldset>
+                        
+                    </form>
+                </div>
+                <div class="note">
+                <h5>To do list</h5>
+                <h6>{print}</h6></div>
 
             </div>
         )

@@ -17,7 +17,7 @@ const CourseSchema = new Schema({
         type: Date,
     },
     end_date: {
-        type: Date
+        type: Date,
     },
     current_grade:{
         type:Number,
