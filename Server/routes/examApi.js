@@ -8,7 +8,7 @@ const { response } = require("express");
 
 router.post(
     "/", 
-    [auth, [check("title", "Title is Required").not().isEmpty(),check("distribute", "Need distribution").not().isEmpty()]] ,async(req, res) => {
+    [auth, [check("title", "Title is Required").not().isEmpty(),check("distribute", "Need distribution").not().isEmpty(),check("day", "Need date").not().isEmpty()]] ,async(req, res) => {
         const errors = validationResult(req);
 
         if(!errors.isEmpty()){
@@ -16,12 +16,13 @@ router.post(
         }
         try {
 
-            const {courseId, title,current, distribute} = req.body;
+            const {courseId, title,current, distribute,day} = req.body;
             const newExam = new Exam({
                 courseId,
                 title,
                 current,
                 distribute,
+                day,
             });
             const exam = await newExam.save();
             res.json({exam});
@@ -33,7 +34,7 @@ router.post(
 //get all exam in a course
 router.get("/:id", async(req, res)=> {
     try {
-        const exams = await Exam.find({courseId:req.params.id});
+        const exams = await Exam.find({courseId:req.params.id}).sort({'day': 'asc'})
         res.json(exams);
     }catch(error) {
             console.error(error.message);

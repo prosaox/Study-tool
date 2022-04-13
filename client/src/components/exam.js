@@ -7,7 +7,8 @@ const Exam = () => {
     const { topicId } = useParams();
     const [title, setTitle] = useState('');
     const [current, setCurrent] = useState(0);
-    const [distribute, setDistribute] = useState(0);      
+    const [distribute, setDistribute] = useState(0);
+    const [day,setDay]=useState(Date.now());      
     const [exams,setExams]=useState(null);
     const [totalCurr,setTotalCurr]=useState(0);
     const [totalDistribute,setTotalDistribute]=useState(0);
@@ -36,7 +37,8 @@ const Exam = () => {
             }
         };
         getExam();
-    });
+        // alert(exams);
+    },[]);
     const createExam = async () => {
         if(+current>+distribute)
         {
@@ -59,9 +61,12 @@ const Exam = () => {
                         'courseId':topicId,
                         'title': title,
                         'current':current,
-                        'distribute':distribute
+                        'distribute':distribute,
+                        'day':day,
                     }),
+                    
                 })
+                alert(`hello, ${res.status}`);
             } catch (err) {
 
             }
@@ -98,6 +103,7 @@ const Exam = () => {
                         <label for="field1"><span>Title <span >*</span></span><input value={title} onChange={(e) => setTitle(e.target.value)} type="text" class="input-field" name="field1" required/></label>
                         <label for="field2"><span>Current <span ></span></span><input value={current} onChange={(e) => setCurrent(e.target.value)} type="number" class="input-field" name="field2" min="0" max="100"/></label>
                         <label for="field3"><span>Distribution <span >*</span></span><input value={distribute} onChange={(e) => setDistribute(e.target.value)} type="number" class="input-field" name="field3" min="0" max="100" required/></label>
+                        <label for="field4"><span>Day <span >*</span></span><input value={day} onChange={(e) => setDay(e.target.value)} type="date" class="input-field" name="field4" required/></label>
                         <label><input type="submit" value="Add" /></label>
                         </fieldset>
                         
@@ -105,18 +111,21 @@ const Exam = () => {
                 </div>
                 <table>
                     <tr>
+                        <th><h1>Day/Deadline</h1></th>
                         <th><h1>Tests</h1></th>
                         <th><h1>Score/Grade Distribution</h1></th>
                         <th><h1>Options</h1></th>
                     </tr>
+                    
                     {exams.map(c => 
                     <tr key={c._id} >
+                                <td><h2>{c.day.split('T')[0]}</h2></td>
                                 <td><h2>{c.title}</h2></td>
                                 <td><h3>{c.current}/{c.distribute}</h3></td>
                                 <td><button class="xButton" onClick={removeExam.bind(this,c._id)}>X</button></td>
-                                {/* <button class="revealButton" onClick={toggle_element.bind(this,c._id)}>Reveal/Hide</button> */}
                     </tr>)}     
                     <tr>
+                        <th><h1></h1></th>
                         <th><h1>Total</h1></th>
                         <th><h1>{totalCurr}/{totalDistribute}</h1></th>
                     </tr>           

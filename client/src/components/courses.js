@@ -51,10 +51,6 @@ const Courses = () => {
 
             }
         };
-        if(user!==null)
-        {
-            getCourses();
-        }
         getCourses();
     });
 
@@ -96,17 +92,7 @@ const Courses = () => {
     };
 
     if (courses == null) {
-        return <div>
-            <div>
-        <form onSubmit={createCourse}>
-            <div className="form-group">
-                <input id="courseName" value={name} onChange={(e) => setName(e.target.value)} required type="Name" placeholder="Course Name" />
-            </div>
-            <div className="form-group">
-                <input id="courseDescription" value={description} onChange={(e) => setDescription(e.target.value)} type="Description" placeholder="Description" />
-            </div>
-            <button type="submit" className="btn btn-dark">Add new class</button>
-    </form></div></div>;
+        return (<p>loading</p>);
     } else {
         return (
             

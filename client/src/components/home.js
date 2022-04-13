@@ -28,6 +28,8 @@ const Home = () => {
             }
         };
         getUser();
+        
+        
     },[]);
 
     if (user === null) {

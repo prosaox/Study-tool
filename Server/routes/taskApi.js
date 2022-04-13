@@ -38,7 +38,7 @@ router.post(
 // get all tasks
 router.get("/", async(req, res)=> {
     try {
-        const tasks = await Task.find();
+        const tasks = await Task.find({'due_date': {"$gte": Date.now()}}).sort({'due_date': 'asc'});
         res.json(tasks);
     }catch(error) {
             console.error(error.message);
@@ -48,7 +48,7 @@ router.get("/", async(req, res)=> {
 // get task by user Id
 router.get("/:id", async(req, res)=> {
     try {
-        const task = await Task.find({userId:req.params.id});
+        const task = await Task.find({userId:req.params.id},{'due_date': {"$gte": Date.now()}}).sort({'due_date': 'asc'});
         res.json(task);
     }catch(error) {
             console.error(error.message);

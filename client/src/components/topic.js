@@ -16,7 +16,7 @@ const [courseId, setCourseId] = useState(null);
 const [name, setName] = useState('');
 const [description, setDescription] = useState('');
 const [start, setStart] = useState(Date.now());
-const [due, setDue] = useState('04-07-2022');
+const [due, setDue] = useState(Date.now());
 //course
 const [courseName, setCourseName] = useState('');
 const [courseDescription, setCourseDescription] = useState('');
@@ -180,9 +180,8 @@ const [show,setShow]=useState(false);
                                     <input id="courseDescription" value={description} onChange={(e) => setDescription(e.target.value)} type="Task description" placeholder="Description" />
                                 </div>
                                 <div className="form-group">
-                                    <input id="courseDue" value={due} onChange={(e) => setDue(e.target.value)} type="Task due date" placeholder="Due date"/>
+                                    <input id="courseDue" value={due} onChange={(e) => setDue(e.target.value)} type="date" placeholder="Due date"/>
                                 </div>
-                                <button type="submit" className="btn btn-dark">Add new task</button>
                 </form>
             </div>
         )
@@ -205,7 +204,7 @@ const [show,setShow]=useState(false);
                                     <input id="courseDescription" value={description} onChange={(e) => setDescription(e.target.value)} type="Task description" placeholder="Description" />
                                 </div>
                                 <div className="form-group">
-                                    <input id="courseDue" value={due} onChange={(e) => setDue(e.target.value)} type="Task due date" placeholder="Due date"/>
+                                    <input id="courseDue" value={due} onChange={(e) => setDue(e.target.value)} type="date" placeholder="Due date"/>
                                 </div>
                                 <button type="submit" className="btn btn-dark">Add new task</button>
                 </form>

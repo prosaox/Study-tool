@@ -17,6 +17,10 @@ const ExamSchema = new Schema({
         type: Number,
         require: true
     },
+    day:{
+        type: Date,
+        require: true
+    }
 });
 
 const Exam = mongoose.model("Exam", ExamSchema);
