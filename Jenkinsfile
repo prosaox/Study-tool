@@ -51,6 +51,16 @@ pipeline {
                 }
             }
         }
+        stage('Regression test')
+        {
+            steps{
+                script {
+                dir('Server') {
+                    sh 'npm run test'
+                }
+                }
+            }
+        }
            stage('Building Image'){  
             steps{    
                 script {

@@ -73,7 +73,7 @@ const Home = () => {
                     <Navbar />
                 <div class="col">
                     <div>
-                    <p> Welcome, {name} to StudyBuddy!</p>
+                    <p> Welcome, {userId} to StudyBuddy!</p>
                     <h6>My profile</h6>
                     <p>Degree:{user.degree}</p>
                     <p>Studying at:{user.school}</p>

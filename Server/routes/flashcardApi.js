@@ -8,7 +8,7 @@ const { response } = require("express");
 
 router.post(
     "/", 
-    [auth, [check("title", "Title is Required").not().isEmpty()]] ,async(req, res) => {
+    [check("title", "Title is Required").not().isEmpty(),check("content", "content is Required").not().isEmpty()] ,async(req, res) => {
         const errors = validationResult(req);
 
         if(!errors.isEmpty()){
@@ -27,7 +27,7 @@ router.post(
             const flashcard = await newFlashcard.save();
             res.json({flashcard});
         }catch(error) {
-            console.error(error.message);
+            // console.error(error.message);
             res.status(500).send("Server error")
         }
 });

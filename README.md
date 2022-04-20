@@ -8,6 +8,9 @@
 npm install
 npm i concurrently
 npm run dev
+###  Test
+npm install
+npm test
 ###  Team Members
 
 | Name | GitHub Username | Email
