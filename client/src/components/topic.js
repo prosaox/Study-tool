@@ -120,7 +120,6 @@ const [show,setShow]=useState(false);
                 .then(res => res.json());
                 // setStart(Date.now());
 
-                alert(`hello, ${courseId}`);
         } catch (err) {
 
         }
@@ -137,7 +136,7 @@ const [show,setShow]=useState(false);
                     "x-auth-token": token
                 },
                 body: JSON.stringify({
-                    'name': courseName,
+                    'name': ""+courseName,
                     'description':courseDescription,
                 }),
             })

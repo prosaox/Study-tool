@@ -169,10 +169,10 @@ const Exam = () => {
                                         <ul class="form-style-1">
                     <form onSubmit={updateExam}>
                         <fieldset><legend>Edit Test/Assignment/Exam</legend>
-                        <li><label for="field1"><span>Title <span >*</span></span><input value={title} onChange={(e) => setTitle(e.target.value)} type="text" class="input-field" name="field1" required/></label></li>
-                        <li><label for="field2"><span>Current <span ></span></span><input value={current} onChange={(e) => setCurrent(e.target.value)} type="number" class="input-field" name="field2" min="0" max="100"/></label></li>
-                        <li><label for="field3"><span>Distribution <span >*</span></span><input value={distribute} onChange={(e) => setDistribute(e.target.value)} type="number" class="input-field" name="field3" min="0" max="100" required/></label></li>
-                        <li><label for="field4"><span>Day <span >*</span></span><input value={day} onChange={(e) => setDay(e.target.value)} type="date" class="input-field" name="field4"required/></label></li>
+                        <li><label for="field1"><span>Title <span >*</span></span><input onChange={(e) => setTitle(e.target.value)} type="text" class="input-field" name="field1" required placeholder={c.title}/></label></li>
+                        <li><label for="field2"><span>Current Score<span ></span></span><input onChange={(e) => setCurrent(e.target.value)} type="number" class="input-field" name="field2" min="0" max="100" placeholder={c.current}/></label></li>
+                        <li><label for="field3"><span>Distribution <span >*</span></span><input onChange={(e) => setDistribute(e.target.value)} type="number" class="input-field" name="field3" min="0" max="100" required placeholder={c.distribute}/></label></li>
+                        <li><label for="field4"><span>Day <span >*</span></span><input onChange={(e) => setDay(e.target.value)} type="date" class="input-field" name="field4" required placeholder={c.day}/></label></li>
                         <li><label><input type="submit" value="Edit" /></label></li>
                         </fieldset>
                         

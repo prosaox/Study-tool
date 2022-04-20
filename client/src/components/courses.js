@@ -36,26 +36,24 @@ const Courses = () => {
             }
         };
         getUser();
-    });
-    useEffect(() => {
-        const getCourses = async () => {
-            try {
-                const res = await fetch("http://localhost:5001/api/courses/"+userId, {
-                    method: "GET",
-
-                    headers: {
-
-                    },
-                })
-                    .then(res => res.json());
-                setCourses(res);
-            } catch (err) {
-
-            }
-        };
         getCourses();
     });
+    const getCourses = async () => {
+        try {
+            const res = await fetch("http://localhost:5001/api/courses/"+userId, {
+                method: "GET",
 
+                headers: {
+
+                },
+            })
+                .then(res => res.json());
+            setCourses(res);
+        
+        } catch (err) {
+
+        }
+    };
     const createCourse = async (event) => {
         event.preventDefault();
         const token = localStorage.getItem("token");
