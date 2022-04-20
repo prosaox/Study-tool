@@ -8,7 +8,7 @@ const { response } = require("express");
 
 router.post(
     "/", 
-    [auth, [check("name", "Name is Required").not().isEmpty()]] ,async(req, res) => {
+    [check("name", "Name is Required").not().isEmpty(),check("due_date", "deadline is Required").not().isEmpty()] ,async(req, res) => {
         const errors = validationResult(req);
 
         if(!errors.isEmpty()){
@@ -17,9 +17,9 @@ router.post(
         
         try {
 
-            const {courseId, name, description, start_date, due_date} = req.body;
+            const {userId,courseId, name, description, start_date, due_date} = req.body;
             const newTask = new Task({
-                userId: req.user.id,
+                userId,
                 courseId,
                 name,
                 description,

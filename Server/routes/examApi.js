@@ -8,7 +8,7 @@ const { response } = require("express");
 
 router.post(
     "/", 
-    [auth, [check("title", "Title is Required").not().isEmpty(),check("distribute", "Need distribution").not().isEmpty(),check("day", "Need date").not().isEmpty()]] ,async(req, res) => {
+    [[check("title", "Title is Required").not().isEmpty(),check("distribute", "Need distribution").not().isEmpty(),check("day", "Need date").not().isEmpty()]] ,async(req, res) => {
         const errors = validationResult(req);
 
         if(!errors.isEmpty()){
@@ -37,7 +37,7 @@ router.get("/:id", async(req, res)=> {
         const exams = await Exam.find({courseId:req.params.id}).sort({'day': 'asc'})
         res.json(exams);
     }catch(error) {
-            console.error(error.message);
+            // console.error(error.message);
             res.status(500).send("Server error")
     }
 });
