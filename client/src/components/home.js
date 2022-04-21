@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react';
 import Navbar from './navbar';
-import "./home.css"
+import "../style/home.css"
 const Home = () => {
     const [user, setUser] = useState(null);
     const [name, setName] = useState('');
@@ -73,7 +73,7 @@ const Home = () => {
                     <Navbar />
                 <div class="col">
                     <div>
-                    <p> Welcome, {userId} to StudyBuddy!</p>
+                    <p> Welcome, {name} to StudyBuddy!</p>
                     <h6>My profile</h6>
                     <p>Degree:{user.degree}</p>
                     <p>Studying at:{user.school}</p>

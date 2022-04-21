@@ -23,7 +23,7 @@ npm test
 ###  Team Leader:
 | Name | GitHub Username | Email
 | --- | --- | --- |
-| Abu Sayeed Khan | sayeedkhannabil| khanas1@myumanitoba.ca
+| Aaron Nguyen | prosaox| nguyen62@myumanitoba.ca
 
 
 ### Core Features

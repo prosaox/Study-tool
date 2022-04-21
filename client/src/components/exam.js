@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { useState } from 'react';
 import Navbar from './navbar';
 import Modal from 'react-modal';
-import "./exam.css"
+import "../style/exam.css"
 const Exam = () => {
     const { topicId } = useParams();
     const [title, setTitle] = useState('');
@@ -76,7 +76,6 @@ const Exam = () => {
                     }),
                     
                 })
-                alert(`hello, ${res.status}`);
             } catch (err) {
 
             }
@@ -113,7 +112,6 @@ const Exam = () => {
                 }),
             })
                 .then(res => res);
-            alert(`hello, ${res.status}`);
         } catch (err) {
 
         }
@@ -131,7 +129,6 @@ const Exam = () => {
     } else {
         return (
             <div class="herohome">
-                <h1> StudyBuddy </h1>
                 <Navbar />
                 <div class="form-style-3">
                     <form onSubmit={createExam}>

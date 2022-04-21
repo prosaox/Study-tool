@@ -1,35 +1,4 @@
-/* .container {
-    position: relative;
-    width: 100%;
-    max-width: 400px;
-    
-  }
-  
-  .container img {
-    width: 20%;
-    height: auto;
-  }
-  
-  .container .btn {
-    position: absolute;
-    top: 90%;
-    left:20%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    background-color: rgb(7, 170, 69);
-    color: white;
-    font-size: 16px;
-    padding: 12px 24px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    text-align: center;
-  }
-  
-  .container .btn:hover {
-    background-color: black;
-  } */
-  .hero{
+.hero{
     background-color: #f8eaea;
   }
   .card {
@@ -78,6 +47,7 @@
   }
   .removeButton{
     position: relative;
+    top:10%;
     left:0%;
     width:30%;
     background-color: rgb(190, 3, 3);
@@ -93,7 +63,7 @@
   .examButton{
     position: relative;
     left:0%;
-    top:40%;
+    top:100%;
     width:30%;
     background-color: rgb(23, 35, 204);
     color: white;

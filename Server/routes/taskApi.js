@@ -58,6 +58,19 @@ router.get("/:id", async(req, res)=> {
             res.status(500).send("Server error")
     }
 });
+// get task by course Id
+
+router.get("/course/:id", async(req, res)=> {
+    try {
+        // var d = Date.now();
+        // d.setDate(d.getDate()+7);
+        const tasks = await Task.find({courseId:req.params.id,'due_date': {"$gte": Date.now()}} ).sort({'due_date': 'asc'});
+        res.json(tasks);
+    }catch(error) {
+            console.error(error.message);
+            res.status(500).send("Server error")
+    }
+});
 
 
 module.exports = router; 

@@ -2,7 +2,7 @@ import { useNavigate,Link,useParams} from 'react-router-dom';
 import React, { useEffect } from 'react'
 import { useState } from 'react';
 import Navbar from './navbar';
-import "./flashcard.css"
+import "../style/flashcard.css"
 const FlashCard = () => {
     const [user, setUser] = useState(null);
     const { topicId } = useParams();
@@ -80,7 +80,6 @@ const FlashCard = () => {
     } else {
         return (
             <div class="herohome">
-                <h1> StudyBuddy </h1>
                 <Navbar />
                 <div class="form-style-3">
                     <form onSubmit={createFlashCard}>
@@ -92,13 +91,13 @@ const FlashCard = () => {
                         
                     </form>
                 </div>
-                <ul class="row">
+                <ul style={{display: "flex"}}>
                     {flashcard.map(c => 
-                    <li key={c._id}>
+                    <li key={c._id} style={{width: "40%"}}>
                         <div class="cardD">
                             <div class="container">
                                 <h3>{c.title}</h3>
-                                <div id={c._id}>
+                                <div id={c._id} style={{display: "none"}}>
                                     <p>{c.content}</p>
                                 </div>
                                 <button class="removeButton" onClick={removeFlashcard.bind(this,c._id)}>Remove</button>

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react';
 import Navbar from './navbar';
-import "./profile.css"
+import "../style/profile.css"
 const Profile = () => {
     const [user, setUser] = useState(null);
     const [name, setName] = useState('');
@@ -68,19 +68,17 @@ const Profile = () => {
     } else {
         return (
             <div class="heroprofile">
-                <h1> StudyBuddy </h1>
                 <Navbar />
-                <h5> Update your information </h5>
                 <form onSubmit={updateUser}>
 <ul class="form-style-1">
-    <li><label>Full Name <span class="required">*</span></label><input type="text" name="field1" class="field-long" value={name} onChange={(e) => setName(e.target.value)} required/></li>
+    <li><label>Full Name <span class="required">*</span></label><input type="text" name="field1" class="field-long" value={name} onChange={(e) => setName(e.target.value)} required placeholder={user.name}/></li>
     <li>
         <label>Phone number</label>
         <input type="tel" name="field3" class="field-long" />
     </li><br></br>
     <li>
         <label>Degree</label>
-        <select name="field4" class="field-select" value={degree} onChange={(e) => setDegree(e.target.value)}>
+        <select name="field4" class="field-select" value={degree} onChange={(e) => setDegree(e.target.value)} >
         <option value="High school">High school</option>
         <option value="Undergraduate">Undergraduate</option>
         <option value="Graduate">Graduate</option>
@@ -88,11 +86,11 @@ const Profile = () => {
     </li>
     <li>
         <label>School/University</label>
-        <input type="text" name="field3" class="field-long" value={school} onChange={(e) => setSchool(e.target.value)}/>
+        <input type="text" name="field3" class="field-long" value={school} onChange={(e) => setSchool(e.target.value)} placeholder={user.school}/>
     </li>
     <li>
         <label>Your Profile </label>
-        <textarea name="field5" id="field5" class="field-long field-textarea" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+        <textarea name="field5" id="field5" class="field-long field-textarea" value={description} onChange={(e) => setDescription(e.target.value)} placeholder={user.description}></textarea>
     </li>
     <li>
         <input type="submit" value="Submit" />
