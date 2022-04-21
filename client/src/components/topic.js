@@ -2,7 +2,7 @@ import { useNavigate,Link,useParams} from 'react-router-dom';
 import React, { useEffect } from 'react'
 import { useState } from 'react';
 import Navbar from './navbar';
-import "./topic.css"
+import "../style/topic.css"
 const Topic = () => {
     const [user, setUser] = useState(null);
     const { topicId } = useParams();
@@ -34,7 +34,6 @@ const [show,setShow]=useState(false);
                     },
                 })
                     .then(res => res.json());
-                    // alert(`hello, ${res.status}`);
                     
                 setTopic(res);
                 setCourseId(res._id);
@@ -70,7 +69,7 @@ const [show,setShow]=useState(false);
     const getTasks = async () => {
         const token = localStorage.getItem("token");
         try {
-            const res =await fetch("http://localhost:5001/api/tasks/", {
+            const res =await fetch("http://localhost:5001/api/tasks/course/"+topicId, {
                 method: "GET",
 
                 headers: {
@@ -93,7 +92,7 @@ const [show,setShow]=useState(false);
                 }
                 setPrint(content);
                 
-            // setTasks(res);
+            setTasks(res);
         } catch (err) {
 
         }
@@ -141,7 +140,6 @@ const [show,setShow]=useState(false);
                 }),
             })
                 .then(res => res);
-            alert(`hello, ${res.status}`);
         } catch (err) {
 
         }
@@ -150,7 +148,6 @@ const [show,setShow]=useState(false);
     {
     return (
             <div class="hero">
-                <h1> StudyBuddy </h1>
                 <Navbar />
                 <h2>{topic.name}</h2>
                 <h5>{topic.description}</h5>
@@ -188,7 +185,6 @@ const [show,setShow]=useState(false);
     else{
         return (
             <div class="hero">
-                <h1> StudyBuddy </h1>
                 <Navbar />
                 <h2>{topic.name}</h2>
                 <h5>{topic.description}</h5>

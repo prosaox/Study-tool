@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"
-import "./login.css"
+import "../style/login.css"
 
 const Login = () => {
 
@@ -83,7 +83,7 @@ const Login = () => {
         if(token)
         {
             if(token==="undefined"){
-                alert("Email has been used to sign up previously");
+                alert("Used email or password smaller than 6 character");
             }
             else{
                 navigate("/home");
