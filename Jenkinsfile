@@ -45,6 +45,7 @@ pipeline {
             steps{
                 script {
                     sh 'cd Server'
+                    sh 'npm install cors'
                     sh 'npm install -g'
                     // sh 'npm install -g  nodemon cors jest supertest express bcryptjs jsonwebtoken mongoose express-validator --save'
                 }
