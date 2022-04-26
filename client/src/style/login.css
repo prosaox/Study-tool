@@ -1,22 +1,17 @@
-.login {
-    left:50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 200%;
-    margin: auto;
+.sign-in {
+    color: white;
 }
 
-.login form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.about-header {
+    color: #555273;
 }
 
-.login input {
-    margin: 1vh 2vw;
+
+.login-form {
+    background-color: #555273;
 }
 
-.login button {
-    margin: 1vh 2vw;
+.logo {
+    height: 95%;
+    width: 95%;
 }
