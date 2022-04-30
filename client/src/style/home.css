@@ -1,12 +1,3 @@
-.herohome{
-    background-color: #f8eaea;
-    background-size:100% 100%;
-  }
-  .note{
-    left:50%;
-    text-align: center;
-    margin:auto;
-    font-size:xx-large;
-    color: red;
-    white-space: pre-wrap;
-  }
+.grey-background {
+    background-color: lightgrey;
+}
