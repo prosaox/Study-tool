@@ -86,7 +86,7 @@ const [show,setShow]=useState(false);
                     {
                         var d=res[i].due_date;
                         d = d.split('T')[0];
-                    content+="Task "+counter+":"+res[i].name+"\nTask info: "+res[i].description+"\n"+"Due date:"+(d)+"\n\n\n";
+                    content+="Task "+counter+":"+res[i].name+"\nTask info: "+res[i].description+"\nDue date:"+(d)+"\n\n\n";
                     counter++;
                     }
                 }

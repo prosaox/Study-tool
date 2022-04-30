@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"
+import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import "../style/login.css"
 
 const Login = () => {
@@ -40,18 +41,17 @@ const Login = () => {
                 }),
             })
                 .then(res => res.json());
-    
+
             localStorage.setItem("token", res.token);
         } catch (err) {
 
         }
         const token = localStorage.getItem("token");
-        if(token)
-        {
-            if(token==="undefined"){
+        if (token) {
+            if (token === "undefined") {
                 alert("Wrong email or password");
             }
-            else{
+            else {
                 navigate("/home");
             }
         }
@@ -80,67 +80,68 @@ const Login = () => {
 
         }
         const token = localStorage.getItem("token");
-        if(token)
-        {
-            if(token==="undefined"){
+        if (token) {
+            if (token === "undefined") {
                 alert("Used email or password smaller than 6 character");
             }
-            else{
+            else {
                 navigate("/home");
             }
         }
     }
     if (showSignInView) {
         return (
-            <div className="container-fluid  bg-dark vh-100">
-                <div className="row h-100 align-items-center justify-content-center">
-                    <div className="col-3">
-                        <div className="text-light text-center">StudyBuddy</div>
-                        <div className="login  p-5 bg-light rounded shadow-sm">
-                            <form onSubmit={loginClick}>
-                                <div className="form-group">
-                                    <input id="loginEmail" value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Email" />
-                                </div>
-                                <div className="form-group">
-                                    <input id="loginPassword" value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Password" />
-                                </div>
-                                <button type="submit" className="btn btn-dark">Sign In</button>
-                            </form>
-                            <div className="text-dark">
-                                Or
-                            </div>
-                            <button className="btn btn-secondary" onClick={toggleViewClick}>Sign Up</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <Container className='d-flex h-100'>
+                <Row className='w-100 h-100'>
+                    <Col xs={12} lg={6} className='d-flex flex-column align-items-center justify-content-center h-100'>
+                        <h1 className='about-header'>What is StudyBuddy?</h1>
+                        <p>StudyBuddy is a web-based tool to help students better manage their schedules. With StudyBuddy, students can add their courses and track their assignments, quizzes, midterms, and final exam deadlines. Additionally, users can schedule their own personal routine to create better study habits. Overall, students will be able to track their progress throughout their desired time period and track if they are progressing towards their individual goals.</p>
+                    </Col>
+                    <Col xs={12} lg={6} className='login-form d-flex flex-column align-items-center justify-content-center h-100'>
+                        <Form className='login-form text-center w-75' onSubmit={loginClick}>
+                            <img className='w-75' src='studybuddy-white-transparent.png' />
+                            <h1 className='text-light'>Sign in</h1>
+                            <Form.Group className='my-2 ml-2' >
+                                <Form.Control id="loginEmail" type="email" onChange={(e) => setEmail(e.target.value)} size="lg" placeholder="Email" />
+                            </Form.Group>
+                            <Form.Group className='my-2 ml-2'>
+                                <Form.Control id="loginPassword" type="password" value={password} onChange={(e) => setPassword(e.target.value)} size="lg" placeholder="Password" />
+                            </Form.Group>
+                            <Button className='mt-2' variant="primary" type="submit">Login</Button>
+                        </Form>
+                        <p className='text-light my-3'>Or</p>
+                        <Button className="" variant='light' onClick={toggleViewClick} >Signup</Button>
+                    </Col>
+                </Row>
+            </Container>
         );
     } else {
         return (
-            <div className="container-fluid  bg-dark vh-100">
-                <div className="row h-100 align-items-center justify-content-center">
-                    <div className="col-3">
-                        <div className="text-light text-center">StudyBuddy</div>
-                        <div className="login  p-5 bg-light rounded shadow-sm">
-                            <form onSubmit={signupClick}>
-                                <div className="form-group">
-                                    <input id="signupName" value={name} onChange={(e) => setName(e.target.value)} type="name" placeholder="Name" />
-                                </div>
-                                <div className="form-group">
-                                    <input id="signupEmail" value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Email" />
-                                </div>
-                                <div className="form-group">
-                                    <input id="signupPassword" value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Password" />
-                                </div>
-                                <button type="submit" className="btn btn-dark">Sign Up</button>
-                            </form>
-                            <div className="text-dark">
-                                <button className="btn btn-link" onClick={toggleViewClick}>Go Back</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <Container className='d-flex h-100'>
+                <Row className='w-100 h-100'>
+                    <Col xs={12} lg={6} className='d-flex flex-column align-items-center justify-content-center h-100'>
+                        <h1 className='about-header'>What is StudyBuddy?</h1>
+                        <p>StudyBuddy is a web-based tool to help students better manage their schedules. With StudyBuddy, students can add their courses and track their assignments, quizzes, midterms, and final exam deadlines. Additionally, users can schedule their own personal routine to create better study habits. Overall, students will be able to track their progress throughout their desired time period and track if they are progressing towards their individual goals.</p>
+                    </Col>
+                    <Col xs={12} lg={6} className='login-form d-flex flex-column align-items-center justify-content-center h-100'>
+                        <Form className='login-form text-center w-75' onSubmit={signupClick}>
+                            <img className='w-75' src='studybuddy-white-transparent.png' />
+                            <h1 className='text-light'>Sign Up</h1>
+                            <Form.Group className='my-2 ml-2' >
+                                <Form.Control id="signupName" type="text" onChange={(e) => setName(e.target.value)} size="lg" placeholder="Name" />
+                            </Form.Group>
+                            <Form.Group className='my-2 ml-2' >
+                                <Form.Control id="signupEmail" type="email" onChange={(e) => setEmail(e.target.value)} size="lg" placeholder="Email" />
+                            </Form.Group>
+                            <Form.Group className='my-2 ml-2'>
+                                <Form.Control id="signupPassword" type="password" value={password} onChange={(e) => setPassword(e.target.value)} size="lg" placeholder="Password" />
+                            </Form.Group>
+                            <Button className='mt-2' variant="primary" type="submit">Signup</Button>
+                        </Form>
+                        <Button variant='link' onClick={toggleViewClick} >Go Back</Button>
+                    </Col>
+                </Row>
+            </Container>
         );
     }
 }
